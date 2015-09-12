@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Audio:</strong>
+  <%= @recording.audio %>
+</p>
+
+<p>
+  <strong>Recorded:</strong>
+  <%= @recording.recorded %>
+</p>
+
+<p>
+  <strong>Interview:</strong>
+  <%= @recording.interview %>
+</p>
+
+<p>
+  <strong>Language:</strong>
+  <%= @recording.language %>
+</p>
+
+<p>
+  <strong>Word:</strong>
+  <%= @recording.word %>
+</p>
+
+<%= link_to 'Edit', edit_recording_path(@recording) %> |
+<%= link_to 'Back', recordings_path %>

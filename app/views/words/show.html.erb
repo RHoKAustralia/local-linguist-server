@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>English text:</strong>
+  <%= @word.english_text %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @word.image %>
+</p>
+
+<p>
+  <strong>Study:</strong>
+  <%= @word.study %>
+</p>
+
+<%= link_to 'Edit', edit_word_path(@word) %> |
+<%= link_to 'Back', words_path %>

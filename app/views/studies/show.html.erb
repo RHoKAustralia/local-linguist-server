@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @study.name %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @study.start_date %>
+</p>
+
+<p>
+  <strong>Region:</strong>
+  <%= @study.region %>
+</p>
+
+<%= link_to 'Edit', edit_study_path(@study) %> |
+<%= link_to 'Back', studies_path %>

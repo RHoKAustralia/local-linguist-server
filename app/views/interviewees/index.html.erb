@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Interviewees</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @interviewees.each do |interviewee| %>
+      <tr>
+        <td><%= interviewee.name %></td>
+        <td><%= interviewee.email %></td>
+        <td><%= link_to 'Show', interviewee %></td>
+        <td><%= link_to 'Edit', edit_interviewee_path(interviewee) %></td>
+        <td><%= link_to 'Destroy', interviewee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Interviewee', new_interviewee_path %>
