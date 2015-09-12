@@ -6,7 +6,7 @@ RSpec.describe "recordings/show", type: :view do
       :audio => "",
       :interview => nil,
       :language => nil,
-      :word => nil
+      :phrase => nil
     ))
   end
 

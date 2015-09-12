@@ -6,6 +6,8 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Mobile</th>
+      <th>Device</th>
       <th>Email</th>
       <th colspan="3"></th>
     </tr>
@@ -15,6 +17,8 @@
     <% @interviewers.each do |interviewer| %>
       <tr>
         <td><%= interviewer.name %></td>
+        <td><%= interviewer.mobile %></td>
+        <td><%= interviewer.device_id %></td>
         <td><%= interviewer.email %></td>
         <td><%= link_to 'Show', interviewer %></td>
         <td><%= link_to 'Edit', edit_interviewer_path(interviewer) %></td>

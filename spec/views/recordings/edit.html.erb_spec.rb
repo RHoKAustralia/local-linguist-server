@@ -6,7 +6,7 @@ RSpec.describe "recordings/edit", type: :view do
       :audio => "",
       :interview => nil,
       :language => nil,
-      :word => nil
+      :phrase => nil
     ))
   end
 
@@ -21,7 +21,7 @@ RSpec.describe "recordings/edit", type: :view do
 
       assert_select "input#recording_language_id[name=?]", "recording[language_id]"
 
-      assert_select "input#recording_word_id[name=?]", "recording[word_id]"
+      assert_select "input#recording_phrase_id[name=?]", "recording[phrase_id]"
     end
   end
 end

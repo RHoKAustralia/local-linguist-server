@@ -31,7 +31,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 # Using scaffolds to knock this out fast
-gem 'beautiful_scaffold', '0.3.5'
+gem 'bootstrap-generators', '~> 3.3.4'
 
 group :development, :test do
   gem 'factory_girl_rails'

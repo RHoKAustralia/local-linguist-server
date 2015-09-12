@@ -4,6 +4,7 @@ RSpec.describe "interviewees/edit", type: :view do
   before(:each) do
     @interviewee = assign(:interviewee, Interviewee.create!(
       :name => "MyString",
+      :mobile => "MyString",
       :email => "MyString"
     ))
   end
@@ -14,6 +15,8 @@ RSpec.describe "interviewees/edit", type: :view do
     assert_select "form[action=?][method=?]", interviewee_path(@interviewee), "post" do
 
       assert_select "input#interviewee_name[name=?]", "interviewee[name]"
+
+      assert_select "input#interviewee_mobile[name=?]", "interviewee[mobile]"
 
       assert_select "input#interviewee_email[name=?]", "interviewee[email]"
     end

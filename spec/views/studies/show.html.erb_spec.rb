@@ -4,7 +4,7 @@ RSpec.describe "studies/show", type: :view do
   before(:each) do
     @study = assign(:study, Study.create!(
       :name => "Name",
-      :region => nil
+      :language => nil
     ))
   end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150912013636) do
+ActiveRecord::Schema.define(version: 20150912003030) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20150912013636) do
 
   create_table "interviewees", force: :cascade do |t|
     t.string   "name"
+    t.string   "mobile"
     t.string   "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -42,6 +43,8 @@ ActiveRecord::Schema.define(version: 20150912013636) do
 
   create_table "interviewers", force: :cascade do |t|
     t.string   "name"
+    t.string   "mobile"
+    t.string   "device_id"
     t.string   "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -79,6 +82,17 @@ ActiveRecord::Schema.define(version: 20150912013636) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "locale_studies", force: :cascade do |t|
+    t.string   "completed_boolean"
+    t.integer  "locale_id"
+    t.integer  "study_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "locale_studies", ["locale_id"], name: "index_locale_studies_on_locale_id", using: :btree
+  add_index "locale_studies", ["study_id"], name: "index_locale_studies_on_study_id", using: :btree
+
   create_table "locales", force: :cascade do |t|
     t.string   "name"
     t.integer  "region_id"
@@ -88,19 +102,37 @@ ActiveRecord::Schema.define(version: 20150912013636) do
 
   add_index "locales", ["region_id"], name: "index_locales_on_region_id", using: :btree
 
+  create_table "phrase_studies", force: :cascade do |t|
+    t.integer  "phrase_id"
+    t.integer  "study_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "phrase_studies", ["phrase_id"], name: "index_phrase_studies_on_phrase_id", using: :btree
+  add_index "phrase_studies", ["study_id"], name: "index_phrase_studies_on_study_id", using: :btree
+
+  create_table "phrases", force: :cascade do |t|
+    t.string   "english_text"
+    t.binary   "audio"
+    t.binary   "image"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "recordings", force: :cascade do |t|
     t.binary   "audio"
     t.datetime "recorded"
     t.integer  "interview_id"
     t.integer  "language_id"
-    t.integer  "word_id"
+    t.integer  "phrase_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
 
   add_index "recordings", ["interview_id"], name: "index_recordings_on_interview_id", using: :btree
   add_index "recordings", ["language_id"], name: "index_recordings_on_language_id", using: :btree
-  add_index "recordings", ["word_id"], name: "index_recordings_on_word_id", using: :btree
+  add_index "recordings", ["phrase_id"], name: "index_recordings_on_phrase_id", using: :btree
 
   create_table "regions", force: :cascade do |t|
     t.string   "name"
@@ -114,22 +146,12 @@ ActiveRecord::Schema.define(version: 20150912013636) do
   create_table "studies", force: :cascade do |t|
     t.string   "name"
     t.date     "start_date"
-    t.integer  "region_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "language_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
-  add_index "studies", ["region_id"], name: "index_studies_on_region_id", using: :btree
-
-  create_table "words", force: :cascade do |t|
-    t.string   "english_text"
-    t.binary   "image"
-    t.integer  "study_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
-  add_index "words", ["study_id"], name: "index_words_on_study_id", using: :btree
+  add_index "studies", ["language_id"], name: "index_studies_on_language_id", using: :btree
 
   add_foreign_key "interviewee_languages", "interviewees"
   add_foreign_key "interviewee_languages", "languages"
@@ -139,11 +161,14 @@ ActiveRecord::Schema.define(version: 20150912013636) do
   add_foreign_key "interviews", "studies"
   add_foreign_key "language_locales", "languages"
   add_foreign_key "language_locales", "locales"
+  add_foreign_key "locale_studies", "locales"
+  add_foreign_key "locale_studies", "studies"
   add_foreign_key "locales", "regions"
+  add_foreign_key "phrase_studies", "phrases"
+  add_foreign_key "phrase_studies", "studies"
   add_foreign_key "recordings", "interviews"
   add_foreign_key "recordings", "languages"
-  add_foreign_key "recordings", "words"
+  add_foreign_key "recordings", "phrases"
   add_foreign_key "regions", "countries"
-  add_foreign_key "studies", "regions"
-  add_foreign_key "words", "studies"
+  add_foreign_key "studies", "languages"
 end

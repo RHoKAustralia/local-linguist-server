@@ -1,29 +1,33 @@
 Rails.application.routes.draw do
-  resources :interviewees
+  resources :recordings
   resources :interviews
-  resources :words
-  resources :recordings
+  resources :studies
   resources :interviewees
   resources :interviewers
-  resources :languages
-  resources :studies
-  resources :studies
-  resources :languages
-  resources :locales
-  resources :regions
-  resources :regions
-  resources :countries
-  resources :words
-  resources :recordings
-  resources :interviewees
   resources :interviewers
-  resources :studies
+  resources :interviewers
+  resources :interviewers
+  resources :interviewers
+  resources :interviewers
+  resources :phrases
   resources :languages
   resources :locales
   resources :regions
   resources :countries
+
+  resources :locales
+  resources :regions
+  resources :countries
+  resources :phrases
+  resources :languages
+  resources :interviewers
+  resources :regions
+  resources :locales
+  resources :studies
+  resources :interviewees
   resources :interviews
-  resources :interviews
+  resources :recordings
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -20,9 +20,6 @@ RSpec.describe "interviews/index", type: :view do
 
   it "renders a list of interviews" do
     render
-    assert_select "tr>td", :text => nil.to_s, :count => 2
-    assert_select "tr>td", :text => nil.to_s, :count => 2
-    assert_select "tr>td", :text => nil.to_s, :count => 2
-    assert_select "tr>td", :text => nil.to_s, :count => 2
+    assert_select "tr>td", :text => nil.to_s, :count => 10
   end
 end

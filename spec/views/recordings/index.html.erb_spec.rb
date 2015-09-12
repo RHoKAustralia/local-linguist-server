@@ -4,25 +4,22 @@ RSpec.describe "recordings/index", type: :view do
   before(:each) do
     assign(:recordings, [
       Recording.create!(
-        :audio => "",
+        :audio => "recording",
         :interview => nil,
         :language => nil,
-        :word => nil
+        :phrase => nil
       ),
       Recording.create!(
-        :audio => "",
+        :audio => "recording",
         :interview => nil,
         :language => nil,
-        :word => nil
+        :phrase => nil
       )
     ])
   end
 
   it "renders a list of recordings" do
     render
-    assert_select "tr>td", :text => "".to_s, :count => 2
-    assert_select "tr>td", :text => nil.to_s, :count => 2
-    assert_select "tr>td", :text => nil.to_s, :count => 2
-    assert_select "tr>td", :text => nil.to_s, :count => 2
+    assert_select "tr>td", :text => "recording".to_s, :count => 2
   end
 end

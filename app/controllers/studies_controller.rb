@@ -69,6 +69,6 @@ class StudiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def study_params
-      params.require(:study).permit(:name, :start_date, :region_id)
+      params.require(:study).permit(:name, :start_date, :language_id)
     end
 end
