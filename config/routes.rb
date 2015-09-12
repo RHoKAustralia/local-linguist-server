@@ -1,30 +1,12 @@
 Rails.application.routes.draw do
-  resources :recordings
-  resources :interviews
-  resources :studies
-  resources :interviewees
-  resources :interviewers
-  resources :interviewers
-  resources :interviewers
-  resources :interviewers
-  resources :interviewers
-  resources :interviewers
-  resources :phrases
-  resources :languages
-  resources :locales
-  resources :regions
   resources :countries
-
-  resources :locales
   resources :regions
-  resources :countries
-  resources :phrases
+  resources :locales
   resources :languages
+  resources :phrases
   resources :interviewers
-  resources :regions
-  resources :locales
-  resources :studies
   resources :interviewees
+  resources :studies
   resources :interviews
   resources :recordings
 
