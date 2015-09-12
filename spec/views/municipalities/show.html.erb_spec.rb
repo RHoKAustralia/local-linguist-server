@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe "locales/show", type: :view do
+RSpec.describe "municipalities/show", type: :view do
   before(:each) do
-    @locale = assign(:locale, Locale.create!(
+    @municipality = assign(:municipality, Municipality.create!(
       :name => "Name",
-      :municipality => nil
+      :region => nil
     ))
   end
 

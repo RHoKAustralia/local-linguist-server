@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :locales
+  resources :municipalities
   resources :countries
   resources :regions
   resources :locales

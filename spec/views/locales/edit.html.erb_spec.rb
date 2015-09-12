@@ -4,7 +4,7 @@ RSpec.describe "locales/edit", type: :view do
   before(:each) do
     @locale = assign(:locale, Locale.create!(
       :name => "MyString",
-      :region => nil
+      :municipality => nil
     ))
   end
 
@@ -15,7 +15,7 @@ RSpec.describe "locales/edit", type: :view do
 
       assert_select "input#locale_name[name=?]", "locale[name]"
 
-      assert_select "input#locale_region_id[name=?]", "locale[region_id]"
+      assert_select "input#locale_municipality_id[name=?]", "locale[municipality_id]"
     end
   end
 end

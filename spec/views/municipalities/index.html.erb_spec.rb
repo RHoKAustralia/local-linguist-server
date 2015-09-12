@@ -1,20 +1,20 @@
 require 'rails_helper'
 
-RSpec.describe "locales/index", type: :view do
+RSpec.describe "municipalities/index", type: :view do
   before(:each) do
-    assign(:locales, [
-      Locale.create!(
+    assign(:municipalities, [
+      Municipality.create!(
         :name => "Name",
-        :municipality => nil
+        :region => nil
       ),
-      Locale.create!(
+      Municipality.create!(
         :name => "Name",
-        :municipality => nil
+        :region => nil
       )
     ])
   end
 
-  it "renders a list of locales" do
+  it "renders a list of municipalities" do
     render
     assert_select "tr>td", :text => "Name".to_s, :count => 2
     assert_select "tr>td", :text => nil.to_s, :count => 2

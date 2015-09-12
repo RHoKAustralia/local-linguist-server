@@ -1,7 +1,7 @@
 FactoryGirl.define do
-  factory :locale do
+  factory :municipality do
     name "MyString"
-municipality nil
+region nil
   end
 
 end

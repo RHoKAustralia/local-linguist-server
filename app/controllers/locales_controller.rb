@@ -69,6 +69,6 @@ class LocalesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def locale_params
-      params.require(:locale).permit(:name, :region_id)
+      params.require(:locale).permit(:name, :municipality_id)
     end
 end

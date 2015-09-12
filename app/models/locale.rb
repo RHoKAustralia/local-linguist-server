@@ -1,3 +1,3 @@
 class Locale < ActiveRecord::Base
-  belongs_to :region
+  belongs_to :municipality
 end

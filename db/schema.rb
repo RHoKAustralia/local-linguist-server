@@ -95,12 +95,21 @@ ActiveRecord::Schema.define(version: 20150912003030) do
 
   create_table "locales", force: :cascade do |t|
     t.string   "name"
+    t.integer  "municipality_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "locales", ["municipality_id"], name: "index_locales_on_municipality_id", using: :btree
+
+  create_table "municipalities", force: :cascade do |t|
+    t.string   "name"
     t.integer  "region_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "locales", ["region_id"], name: "index_locales_on_region_id", using: :btree
+  add_index "municipalities", ["region_id"], name: "index_municipalities_on_region_id", using: :btree
 
   create_table "phrase_studies", force: :cascade do |t|
     t.integer  "phrase_id"
@@ -163,7 +172,8 @@ ActiveRecord::Schema.define(version: 20150912003030) do
   add_foreign_key "language_locales", "locales"
   add_foreign_key "locale_studies", "locales"
   add_foreign_key "locale_studies", "studies"
-  add_foreign_key "locales", "regions"
+  add_foreign_key "locales", "municipalities"
+  add_foreign_key "municipalities", "regions"
   add_foreign_key "phrase_studies", "phrases"
   add_foreign_key "phrase_studies", "studies"
   add_foreign_key "recordings", "interviews"
