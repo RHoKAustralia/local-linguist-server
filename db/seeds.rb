@@ -457,3 +457,47 @@ locations = [
     municipality = Municipality.where(region_id: region.id, name: location[:municipality]).first_or_create
     locale = Locale.where(municipality_id: municipality.id, name: location[:locale]).first_or_create
   end
+
+  languages = [
+    'Tetum Prasa',
+    'Tetum Terik',
+    'Adabe',
+    'Atauran',
+    'Baikenu',
+    'Bekais',
+    'Bunak',
+    'Dadu\'a',
+    'Fataluku',
+    'Galoli',
+    'Habun',
+    'Idalaka',
+    'Idate',
+    'Isni',
+    'Kairui',
+    'Kawaimina',
+    'Kemak',
+    'Lakalei',
+    'Lolein',
+    'Makalero',
+    'Sa\'ani',
+    'Makasai',
+    'Makuva',
+    'Mambai',
+    'Midiki',
+    'Nanaek',
+    'Naueti',
+    'Rahesuk',
+    'Raklungu',
+    'Resuk',
+    'Tokodede',
+    'Waima\'a'
+  ]
+
+  languages.each { |lang| Language.where(name: lang).first_or_create }
+
+  # TODO: Create translations for these?
+  #
+  # genders = %w(Mane Feto)
+  # occupations = ["To'os na'in", 'Mestre / Mestra', 'Governu', "Loja na'in", 'Xofér', 'La Servisu']
+  # education_levels = ['Eskola Primária', 'SMP', 'SMA', 'Universidade']
+
