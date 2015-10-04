@@ -5,7 +5,10 @@ RSpec.describe "interviewees/show", type: :view do
     @interviewee = assign(:interviewee, Interviewee.create!(
       :name => "Name",
       :mobile => "Mobile",
-      :email => "Email"
+      :email => "Email",
+      :gender => "Gender",
+      :occupation => "Occupation",
+      :education_level => "Education Level"
     ))
   end
 
@@ -14,5 +17,8 @@ RSpec.describe "interviewees/show", type: :view do
     expect(rendered).to match(/Name/)
     expect(rendered).to match(/Mobile/)
     expect(rendered).to match(/Email/)
+    expect(rendered).to match(/Gender/)
+    expect(rendered).to match(/Occupation/)
+    expect(rendered).to match(/Education Level/)
   end
 end

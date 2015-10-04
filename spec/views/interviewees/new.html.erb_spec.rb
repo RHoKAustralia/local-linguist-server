@@ -5,7 +5,10 @@ RSpec.describe "interviewees/new", type: :view do
     assign(:interviewee, Interviewee.new(
       :name => "MyString",
       :mobile => "MyString",
-      :email => "MyString"
+      :email => "MyString",
+      :gender => "MyString",
+      :occupation => "MyString",
+      :education_level => "MyString"
     ))
   end
 
@@ -19,6 +22,12 @@ RSpec.describe "interviewees/new", type: :view do
       assert_select "input#interviewee_mobile[name=?]", "interviewee[mobile]"
 
       assert_select "input#interviewee_email[name=?]", "interviewee[email]"
+
+      assert_select "input#interviewee_gender[name=?]", "interviewee[gender]"
+
+      assert_select "input#interviewee_occupation[name=?]", "interviewee[occupation]"
+
+      assert_select "input#interviewee_education_level[name=?]", "interviewee[education_level]"
     end
   end
 end

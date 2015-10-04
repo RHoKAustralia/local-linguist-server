@@ -1,6 +1,13 @@
-<h1>Editing Study</h1>
+<div class="page-header">
+  <%= link_to studies_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to @study, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-info-sign"></span>
+    Show
+  <% end %>
+  <h1>Editing study</h1>
+</div>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @study %> |
-<%= link_to 'Back', studies_path %>

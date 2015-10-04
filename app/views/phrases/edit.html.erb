@@ -1,6 +1,13 @@
-<h1>Editing Phrase</h1>
+<div class="page-header">
+  <%= link_to phrases_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to @phrase, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-info-sign"></span>
+    Show
+  <% end %>
+  <h1>Editing phrase</h1>
+</div>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @phrase %> |
-<%= link_to 'Back', phrases_path %>

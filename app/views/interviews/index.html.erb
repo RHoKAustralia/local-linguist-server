@@ -1,22 +1,28 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <%= link_to new_interview_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Interview
+  <% end %>
+  <h1>Listing interviews</h1>
+</div>
 
-<h1>Listing Interviews</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Interview time</th>
-      <th>Study</th>
-      <th>Interviewer</th>
-      <th>Interviewee</th>
-      <th>Locale</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @interviews.each do |interview| %>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
       <tr>
+            <th>Interview time</th>
+            <th>Study</th>
+            <th>Interviewer</th>
+            <th>Interviewee</th>
+            <th>Locale</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @interviews) do |interview| %>
         <td><%= interview.interview_time %></td>
         <td><%= interview.study %></td>
         <td><%= interview.interviewer %></td>
@@ -25,11 +31,7 @@
         <td><%= link_to 'Show', interview %></td>
         <td><%= link_to 'Edit', edit_interview_path(interview) %></td>
         <td><%= link_to 'Destroy', interview, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Interview', new_interview_path %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

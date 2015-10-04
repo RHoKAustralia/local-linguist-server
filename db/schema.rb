@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150912003030) do
+ActiveRecord::Schema.define(version: 20150928223552) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,8 +37,11 @@ ActiveRecord::Schema.define(version: 20150912003030) do
     t.string   "name"
     t.string   "mobile"
     t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "gender"
+    t.string   "occupation"
+    t.string   "education_level"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "interviewers", force: :cascade do |t|
@@ -83,11 +86,11 @@ ActiveRecord::Schema.define(version: 20150912003030) do
   end
 
   create_table "locale_studies", force: :cascade do |t|
-    t.string   "completed_boolean"
+    t.boolean  "completed"
     t.integer  "locale_id"
     t.integer  "study_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "locale_studies", ["locale_id"], name: "index_locale_studies_on_locale_id", using: :btree

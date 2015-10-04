@@ -1,6 +1,9 @@
 FactoryGirl.define do
-  factory :language do
-    name "MyString"
+  sequence :language_name do |n|
+    "Language #{n}"
   end
 
+  factory :language do
+    name { generate(:language_name) }
+  end
 end

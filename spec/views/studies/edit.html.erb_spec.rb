@@ -15,7 +15,7 @@ RSpec.describe "studies/edit", type: :view do
 
       assert_select "input#study_name[name=?]", "study[name]"
 
-      assert_select "input#study_language_id[name=?]", "study[language_id]"
+      assert_select "input#study_language[name=?]", "study[language]"
     end
   end
 end

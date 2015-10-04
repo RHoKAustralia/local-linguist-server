@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Interviewer, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject { FactoryGirl.create(:interviewer) }
+
+  describe '#to_s' do
+    it 'shows the interviewers name' do
+      expect(subject.to_s).to eq(subject.name)
+    end
+  end
 end

@@ -1,33 +1,35 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <%= link_to new_interviewer_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Interviewer
+  <% end %>
+  <h1>Listing interviewers</h1>
+</div>
 
-<h1>Listing Interviewers</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Mobile</th>
-      <th>Device</th>
-      <th>Email</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @interviewers.each do |interviewer| %>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
       <tr>
-        <td><%= interviewer.name %></td>
-        <td><%= interviewer.mobile %></td>
-        <td><%= interviewer.device_id %></td>
-        <td><%= interviewer.email %></td>
-        <td><%= link_to 'Show', interviewer %></td>
+            <th>Name</th>
+            <th>Mobile</th>
+            <th>Device</th>
+            <th>Email</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @interviewers) do |interviewer| %>
+            <td><%= interviewer.name %></td>
+            <td><%= interviewer.mobile %></td>
+            <td><%= interviewer.device_id %></td>
+            <td><%= interviewer.email %></td>
+            <td><%= link_to 'Show', interviewer %></td>
         <td><%= link_to 'Edit', edit_interviewer_path(interviewer) %></td>
         <td><%= link_to 'Destroy', interviewer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Interviewer', new_interviewer_path %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

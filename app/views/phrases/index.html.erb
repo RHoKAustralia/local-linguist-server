@@ -1,31 +1,33 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <%= link_to new_phrase_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Phrase
+  <% end %>
+  <h1>Listing phrases</h1>
+</div>
 
-<h1>Listing Phrases</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>English text</th>
-      <th>Audio</th>
-      <th>Image</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @phrases.each do |phrase| %>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
       <tr>
-        <td><%= phrase.english_text %></td>
-        <td><%= phrase.audio %></td>
-        <td><%= phrase.image %></td>
-        <td><%= link_to 'Show', phrase %></td>
+            <th>English text</th>
+            <th>Audio</th>
+            <th>Image</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @phrases) do |phrase| %>
+            <td><%= phrase.english_text %></td>
+            <td><%= phrase.audio %></td>
+            <td><%= phrase.image %></td>
+            <td><%= link_to 'Show', phrase %></td>
         <td><%= link_to 'Edit', edit_phrase_path(phrase) %></td>
         <td><%= link_to 'Destroy', phrase, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Phrase', new_phrase_path %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,29 +1,38 @@
-<%= form_for(@study) do |f| %>
+<%= form_for(@study, html: { class: "form-horizontal", role: "form" }) do |f| %>
   <% if @study.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@study.errors.count, "error") %> prohibited this study from being saved:</h2>
+    <div class="alert alert-danger alert-dismissable" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <h4><%= pluralize(@study.errors.count, "error") %> prohibited this study from being saved:</h4>
 
       <ul>
-      <% @study.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <% @study.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="form-group">
+    <%= f.label :name, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :start_date %><br>
-    <%= f.date_select :start_date %>
+  <div class="form-group">
+    <%= f.label :start_date, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.date_select :start_date, class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :language_id %><br>
-    <%= f.text_field :language_id %>
+  <div class="form-group">
+    <%= f.label :language, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :language, class: "form-control" %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
   </div>
 <% end %>

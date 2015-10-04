@@ -1,4 +1,19 @@
 Rails.application.routes.draw do
+  resources :studies
+  resources :regions
+  resources :recordings
+  resources :phrases
+  resources :municipalities
+  resources :locales
+  resources :languages
+  resources :interviews
+  resources :interviewers
+  resources :interviews
+  resources :interviews
+  resources :countries
+  resources :interviewees
+  resources :occupation_levels
+  resources :occupation_levels
   resources :locales
   resources :municipalities
   resources :countries
@@ -7,7 +22,6 @@ Rails.application.routes.draw do
   resources :languages
   resources :phrases
   resources :interviewers
-  resources :interviewees
   resources :studies
   resources :interviews
   resources :recordings

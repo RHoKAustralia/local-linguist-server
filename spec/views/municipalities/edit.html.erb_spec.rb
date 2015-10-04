@@ -15,7 +15,7 @@ RSpec.describe "municipalities/edit", type: :view do
 
       assert_select "input#municipality_name[name=?]", "municipality[name]"
 
-      assert_select "input#municipality_region_id[name=?]", "municipality[region_id]"
+      assert_select "input#municipality_region[name=?]", "municipality[region]"
     end
   end
 end

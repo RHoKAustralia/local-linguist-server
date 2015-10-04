@@ -1,35 +1,37 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <%= link_to new_recording_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Recording
+  <% end %>
+  <h1>Listing recordings</h1>
+</div>
 
-<h1>Listing Recordings</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Audio</th>
-      <th>Recorded</th>
-      <th>Interview</th>
-      <th>Language</th>
-      <th>Phrase</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @recordings.each do |recording| %>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
       <tr>
-        <td><%= recording.audio %></td>
-        <td><%= recording.recorded %></td>
-        <td><%= recording.interview %></td>
-        <td><%= recording.language %></td>
-        <td><%= recording.phrase %></td>
-        <td><%= link_to 'Show', recording %></td>
+            <th>Audio</th>
+            <th>Recorded</th>
+            <th>Interview</th>
+            <th>Language</th>
+            <th>Phrase</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @recordings) do |recording| %>
+            <td><%= recording.audio %></td>
+            <td><%= recording.recorded %></td>
+            <td><%= recording.interview %></td>
+            <td><%= recording.language %></td>
+            <td><%= recording.phrase %></td>
+            <td><%= link_to 'Show', recording %></td>
         <td><%= link_to 'Edit', edit_recording_path(recording) %></td>
         <td><%= link_to 'Destroy', recording, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Recording', new_recording_path %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

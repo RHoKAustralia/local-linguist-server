@@ -1,19 +1,23 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <%= link_to phrases_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_phrase_path(@phrase), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show phrase</h1>
+</div>
 
-<p>
-  <strong>English text:</strong>
-  <%= @phrase.english_text %>
-</p>
+<dl class="dl-horizontal">
+  <dt>English text:</dt>
+  <dd><%= @phrase.english_text %></dd>
 
-<p>
-  <strong>Audio:</strong>
-  <%= @phrase.audio %>
-</p>
+  <dt>Audio:</dt>
+  <dd><%= @phrase.audio %></dd>
 
-<p>
-  <strong>Image:</strong>
-  <%= @phrase.image %>
-</p>
+  <dt>Image:</dt>
+  <dd><%= @phrase.image %></dd>
 
-<%= link_to 'Edit', edit_phrase_path(@phrase) %> |
-<%= link_to 'Back', phrases_path %>
+</dl>

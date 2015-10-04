@@ -1,31 +1,39 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <%= link_to new_interviewee_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Interviewee
+  <% end %>
+  <h1>Listing interviewees</h1>
+</div>
 
-<h1>Listing Interviewees</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Mobile</th>
-      <th>Email</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @interviewees.each do |interviewee| %>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
       <tr>
-        <td><%= interviewee.name %></td>
-        <td><%= interviewee.mobile %></td>
-        <td><%= interviewee.email %></td>
-        <td><%= link_to 'Show', interviewee %></td>
+            <th>Name</th>
+            <th>Mobile</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>Occupation</th>
+            <th>Education level</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @interviewees) do |interviewee| %>
+            <td><%= interviewee.name %></td>
+            <td><%= interviewee.mobile %></td>
+            <td><%= interviewee.email %></td>
+            <td><%= interviewee.gender %></td>
+            <td><%= interviewee.occupation %></td>
+            <td><%= interviewee.education_level %></td>
+            <td><%= link_to 'Show', interviewee %></td>
         <td><%= link_to 'Edit', edit_interviewee_path(interviewee) %></td>
         <td><%= link_to 'Destroy', interviewee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Interviewee', new_interviewee_path %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -17,11 +17,11 @@ RSpec.describe "recordings/edit", type: :view do
 
       assert_select "input#recording_audio[name=?]", "recording[audio]"
 
-      assert_select "input#recording_interview_id[name=?]", "recording[interview_id]"
+      assert_select "input#recording_interview[name=?]", "recording[interview]"
 
-      assert_select "input#recording_language_id[name=?]", "recording[language_id]"
+      assert_select "input#recording_language[name=?]", "recording[language]"
 
-      assert_select "input#recording_phrase_id[name=?]", "recording[phrase_id]"
+      assert_select "input#recording_phrase[name=?]", "recording[phrase]"
     end
   end
 end

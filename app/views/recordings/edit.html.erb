@@ -1,6 +1,13 @@
-<h1>Editing Recording</h1>
+<div class="page-header">
+  <%= link_to recordings_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to @recording, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-info-sign"></span>
+    Show
+  <% end %>
+  <h1>Editing recording</h1>
+</div>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @recording %> |
-<%= link_to 'Back', recordings_path %>

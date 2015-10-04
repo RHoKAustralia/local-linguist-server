@@ -1,27 +1,29 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <%= link_to new_language_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Language
+  <% end %>
+  <h1>Listing languages</h1>
+</div>
 
-<h1>Listing Languages</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @languages.each do |language| %>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
       <tr>
-        <td><%= language.name %></td>
-        <td><%= link_to 'Show', language %></td>
+            <th>Name</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @languages) do |language| %>
+            <td><%= language.name %></td>
+            <td><%= link_to 'Show', language %></td>
         <td><%= link_to 'Edit', edit_language_path(language) %></td>
         <td><%= link_to 'Destroy', language, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Language', new_language_path %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

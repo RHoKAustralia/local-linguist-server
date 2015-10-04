@@ -15,13 +15,13 @@ RSpec.describe "recordings/new", type: :view do
 
     assert_select "form[action=?][method=?]", recordings_path, "post" do
 
-      assert_select "input#recording_audio[name=?]", "recording[audio]"
+      assert_select "input#recording_audio[name=?]"
 
-      assert_select "input#recording_interview_id[name=?]", "recording[interview_id]"
+      assert_select "input#recording_interview_id[name=?]"
 
-      assert_select "input#recording_language_id[name=?]", "recording[language_id]"
+      assert_select "input#recording_language_id[name=?]"
 
-      assert_select "input#recording_phrase_id[name=?]", "recording[phrase_id]"
+      assert_select "input#recording_phrase_id[name=?]"
     end
   end
 end

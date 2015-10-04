@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # This file should contain all the record creation needed to seed the database with its default values.'},
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).'},
 #
@@ -450,52 +451,25 @@ locations = [
   {region: 'Viqueque', municipality: 'Watulari', locale: 'Uaitame'},
   {region: 'Viqueque', municipality: 'Watulari', locale: 'Vessoru'}
 ]
-  country = Country.create! name: 'Timor Leste'
+  country = Country.where(name: 'Timor Leste').first_or_create
 
   locations.each do |location|
     region = Region.where(country_id: country.id, name: location[:region]).first_or_create
     municipality = Municipality.where(region_id: region.id, name: location[:municipality]).first_or_create
-    locale = Locale.where(municipality_id: municipality.id, name: location[:locale]).first_or_create
+    Locale.where(municipality_id: municipality.id, name: location[:locale]).first_or_create
   end
 
   languages = [
-    'Tetum Prasa',
-    'Tetum Terik',
-    'Adabe',
-    'Atauran',
-    'Baikenu',
-    'Bekais',
-    'Bunak',
-    'Dadu\'a',
-    'Fataluku',
-    'Galoli',
-    'Habun',
-    'Idalaka',
-    'Idate',
-    'Isni',
-    'Kairui',
-    'Kawaimina',
-    'Kemak',
-    'Lakalei',
-    'Lolein',
-    'Makalero',
-    'Sa\'ani',
-    'Makasai',
-    'Makuva',
-    'Mambai',
-    'Midiki',
-    'Nanaek',
-    'Naueti',
-    'Rahesuk',
-    'Raklungu',
-    'Resuk',
-    'Tokodede',
-    'Waima\'a'
+    'Tetum Prasa', 'Tetum Terik', 'Adabe', 'Atauran', 'Baikenu', 'Bekais',
+    'Bunak', 'Dadu\'a', 'Fataluku', 'Galoli', 'Habun', 'Idalaka', 'Idate',
+    'Isni', 'Kairui', 'Kawaimina', 'Kemak', 'Lakalei', 'Lolein', 'Makalero',
+    'Sa\'ani', 'Makasai', 'Makuva', 'Mambai', 'Midiki', 'Nanaek', 'Naueti',
+    'Rahesuk', 'Raklungu', 'Resuk', 'Tokodede', 'Waima\'a'
   ]
 
   languages.each { |lang| Language.where(name: lang).first_or_create }
 
-  # TODO: Create translations for these?
+  # TODO: Implement views for these. They won't be stored in the database though.
   #
   # genders = %w(Mane Feto)
   # occupations = ["To'os na'in", 'Mestre / Mestra', 'Governu', "Loja na'in", 'Xofér', 'La Servisu']

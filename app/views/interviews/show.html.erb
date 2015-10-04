@@ -1,29 +1,29 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <%= link_to interviews_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_interview_path(@interview), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show interview</h1>
+</div>
 
-<p>
-  <strong>Interview time:</strong>
-  <%= @interview.interview_time %>
-</p>
+<dl class="dl-horizontal">
+  <dt>Interview time:</dt>
+  <dd><%= @interview.interview_time %></dd>
 
-<p>
-  <strong>Study:</strong>
-  <%= @interview.study %>
-</p>
+  <dt>Study:</dt>
+  <dd><%= @interview.study %></dd>
 
-<p>
-  <strong>Interviewer:</strong>
-  <%= @interview.interviewer %>
-</p>
+  <dt>Interviewer:</dt>
+  <dd><%= @interview.interviewer %></dd>
 
-<p>
-  <strong>Interviewee:</strong>
-  <%= @interview.interviewee %>
-</p>
+  <dt>Interviewee:</dt>
+  <dd><%= @interview.interviewee %></dd>
 
-<p>
-  <strong>Locale:</strong>
-  <%= @interview.locale %>
-</p>
+  <dt>Locale:</dt>
+  <dd><%= @interview.locale %></dd>
 
-<%= link_to 'Edit', edit_interview_path(@interview) %> |
-<%= link_to 'Back', interviews_path %>
+</dl>

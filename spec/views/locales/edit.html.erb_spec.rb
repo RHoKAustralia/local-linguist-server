@@ -13,9 +13,9 @@ RSpec.describe "locales/edit", type: :view do
 
     assert_select "form[action=?][method=?]", locale_path(@locale), "post" do
 
-      assert_select "input#locale_name[name=?]", "locale[name]"
+      assert_select "input#locale_name[name=?]"
 
-      assert_select "input#locale_municipality_id[name=?]", "locale[municipality_id]"
+      assert_select "input#locale_municipality_id[name=?]"
     end
   end
 end

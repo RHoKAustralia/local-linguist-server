@@ -1,6 +1,13 @@
-<h1>Editing Interviewee</h1>
+<div class="page-header">
+  <%= link_to interviewees_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to @interviewee, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-info-sign"></span>
+    Show
+  <% end %>
+  <h1>Editing interviewee</h1>
+</div>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @interviewee %> |
-<%= link_to 'Back', interviewees_path %>

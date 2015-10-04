@@ -1,19 +1,32 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <%= link_to interviewees_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_interviewee_path(@interviewee), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show interviewee</h1>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @interviewee.name %>
-</p>
+<dl class="dl-horizontal">
+  <dt>Name:</dt>
+  <dd><%= @interviewee.name %></dd>
 
-<p>
-  <strong>Mobile:</strong>
-  <%= @interviewee.mobile %>
-</p>
+  <dt>Mobile:</dt>
+  <dd><%= @interviewee.mobile %></dd>
 
-<p>
-  <strong>Email:</strong>
-  <%= @interviewee.email %>
-</p>
+  <dt>Email:</dt>
+  <dd><%= @interviewee.email %></dd>
 
-<%= link_to 'Edit', edit_interviewee_path(@interviewee) %> |
-<%= link_to 'Back', interviewees_path %>
+  <dt>Gender:</dt>
+  <dd><%= @interviewee.gender %></dd>
+
+  <dt>Occupation:</dt>
+  <dd><%= @interviewee.occupation %></dd>
+
+  <dt>Education level:</dt>
+  <dd><%= @interviewee.education_level %></dd>
+
+</dl>
