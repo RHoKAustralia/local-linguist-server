@@ -1,32 +1,19 @@
 Rails.application.routes.draw do
   get 'welcome/index'
 
-  resources :studies
-  resources :regions
   resources :recordings
-  resources :phrases
-  resources :municipalities
-  resources :locales
-  resources :languages
-  resources :interviews
-  resources :interviewers
-  resources :interviews
-  resources :interviews
+
   resources :countries
+  resources :municipalities
+  resources :regions
+  resources :locales
+
+  resources :languages
+  resources :studies
+  resources :interviewers
   resources :interviewees
-  resources :occupation_levels
-  resources :occupation_levels
-  resources :locales
-  resources :municipalities
-  resources :countries
-  resources :regions
-  resources :locales
-  resources :languages
-  resources :phrases
-  resources :interviewers
-  resources :studies
   resources :interviews
-  resources :recordings
+  resources :phrases
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
