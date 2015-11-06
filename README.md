@@ -13,7 +13,7 @@ Linguist is a web application designed to fulfil two primary goals:
 
 Linguist has been developed using Ruby on Rails. To run this application, you will need the following installed:
 
-* Ruby version 2.2.2
+* Ruby version 2.2.2 (2.2 or later is fine)
 * Rails version 4.2.3
 * Postgresql
 
@@ -26,16 +26,13 @@ Linguist has been developed using Ruby on Rails. To run this application, you wi
 
 *Database Installation and Configuration*:
 
-* Configuration
-* Database creation
-* Database initialization
-* More detail here...
+    rake db:create
+    rake db:migrate
+    rake db:test:prepare
 
 *Runing tests*:
 
-* How to run the test suite
-* More detail here...
-
+    rake
 
 The Linguist application has the following data relationships.
 
