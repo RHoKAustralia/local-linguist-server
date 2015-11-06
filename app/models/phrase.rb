@@ -3,6 +3,9 @@
 #
 # @author Craig Read
 class Phrase < ActiveRecord::Base
+  has_many :recordings
+  has_many :studies, through: :phrase_study
+
   def to_s
     english_text
   end

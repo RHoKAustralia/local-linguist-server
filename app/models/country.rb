@@ -2,6 +2,8 @@
 #
 # @author Craig Read
 class Country < ActiveRecord::Base
+  has_many :regions
+
   def to_s
     name
   end

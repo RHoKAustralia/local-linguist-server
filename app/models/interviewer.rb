@@ -3,6 +3,8 @@
 #
 # @author Craig Read
 class Interviewer < ActiveRecord::Base
+  has_many :interviews
+
   def to_s
     name
   end
