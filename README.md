@@ -28,6 +28,7 @@ Linguist has been developed using Ruby on Rails. To run this application, you wi
 
     rake db:create
     rake db:migrate
+    rake db:seed
     rake db:test:prepare
 
 *Runing tests*:
