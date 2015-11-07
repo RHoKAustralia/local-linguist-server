@@ -37,3 +37,9 @@ Linguist has been developed using Ruby on Rails. To run this application, you wi
 The Linguist application has the following data relationships.
 
 * More detail here...
+
+*Local Linguist Client*
+
+The client component and instructions for setting it up are avaliable here:
+
+[https://github.com/RHoKAustralia/melb-timor-leste](https://github.com/RHoKAustralia/melb-timor-leste)
