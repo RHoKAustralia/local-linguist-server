@@ -17,3 +17,7 @@
 /spec/examples.txt
 /.emacs
 /TAGS
+
+# Ignore lock and temp files
+Gemfile.lock
+.*~
