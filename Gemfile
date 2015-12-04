@@ -29,6 +29,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Upload images and files with paperclip
+gem 'paperclip', '~> 4.3'
+
 # Using scaffolds to knock this out fast
 gem 'bootstrap-generators', '~> 3.3.4'
 
