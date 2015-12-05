@@ -1,5 +1,3 @@
-require 'mutant'
-
 def required_class(file)
   File.basename(file, '.rb').split('_').map(&:capitalize).join
 end
