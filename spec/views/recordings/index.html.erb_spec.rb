@@ -10,8 +10,7 @@ RSpec.describe "recordings/index", type: :view do
 
   it 'renders a list of recordings' do
     render
-    assert_select 'tr>td', text: recording1.audio_url.to_s, count: 2
-    assert_select 'tr>td', text: recording2.audio_url.to_s, count: 2
+    assert_select 'tr>td', text: recording1.audio.to_s, count: 2
     assert_select 'tr>td', text: recording1.recorded.to_s, count: 2
     assert_select 'tr>td', text: recording1.interview.to_s, count: 1
     assert_select 'tr>td', text: recording2.interview.to_s, count: 1

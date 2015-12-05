@@ -62,13 +62,15 @@ class IntervieweesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_interviewee
-      @interviewee = Interviewee.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def interviewee_params
-      params.require(:interviewee).permit(:name, :mobile, :email, :gender, :occupation, :education_level)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_interviewee
+    @interviewee = Interviewee.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def interviewee_params
+    params.require(:interviewee).permit(
+      :name, :mobile, :email, :gender, :occupation, :education_level, :age)
+  end
 end

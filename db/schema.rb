@@ -142,7 +142,6 @@ ActiveRecord::Schema.define(version: 20151205215226) do
   end
 
   create_table "recordings", force: :cascade do |t|
-    t.string   "audio_url"
     t.datetime "recorded"
     t.integer  "interview_id"
     t.integer  "language_id"
