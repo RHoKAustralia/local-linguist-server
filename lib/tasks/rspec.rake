@@ -1,4 +1,5 @@
 begin
+  require 'rspec/core/rake_task'
   namespace :spec do
     desc 'Run RSpec with minimal output'
     RSpec::Core::RakeTask.new(:minimal)
