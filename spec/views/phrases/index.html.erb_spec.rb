@@ -12,9 +12,9 @@ RSpec.describe 'phrases/index', type: :view do
     render
     assert_select 'tr>td', text: phrase1.english_text.to_s, count: 1
     assert_select 'tr>td', text: phrase2.english_text.to_s, count: 1
-    assert_select 'tr>td', text: phrase1.audio.to_s, count: 1
-    assert_select 'tr>td', text: phrase2.audio.to_s, count: 1
-    assert_select 'tr>td', text: phrase1.image.to_s, count: 1
-    assert_select 'tr>td', text: phrase2.image.to_s, count: 1
+    assert_select 'tr>td', text: phrase1.audio_url.to_s, count: 1
+    assert_select 'tr>td', text: phrase2.audio_url.to_s, count: 1
+    assert_select 'tr>td', text: phrase1.image_url.to_s, count: 1
+    assert_select 'tr>td', text: phrase2.image_url.to_s, count: 1
   end
 end
