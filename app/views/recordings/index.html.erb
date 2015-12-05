@@ -23,7 +23,7 @@
 
     <tbody>
       <%= content_tag_for(:tr, @recordings) do |recording| %>
-            <td><%= recording.audio.to_s %></td>
+            <td><%= audio_tag recording.audio_file_name, controls: true, autoplay: false %></td>
             <td><%= recording.recorded %></td>
             <td><%= recording.interview %></td>
             <td><%= recording.language %></td>
