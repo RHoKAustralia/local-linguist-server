@@ -460,7 +460,7 @@ locations = [
   end
 
   languages = [
-    'Tetum Prasa', 'Tetum Terik', 'Adabe', 'Atauran', 'Baikenu', 'Bekais',
+    'English', 'Tetum Prasa', 'Tetum Terik', 'Adabe', 'Atauran', 'Baikenu', 'Bekais',
     'Bunak', 'Dadu\'a', 'Fataluku', 'Galoli', 'Habun', 'Idalaka', 'Idate',
     'Isni', 'Kairui', 'Kawaimina', 'Kemak', 'Lakalei', 'Lolein', 'Makalero',
     'Sa\'ani', 'Makasai', 'Makuva', 'Mambai', 'Midiki', 'Nanaek', 'Naueti',
@@ -474,4 +474,3 @@ locations = [
   # genders = %w(Mane Feto)
   # occupations = ["To'os na'in", 'Mestre / Mestra', 'Governu', "Loja na'in", 'Xofér', 'La Servisu']
   # education_levels = ['Eskola Primária', 'SMP', 'SMA', 'Universidade']
-
