@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: linguist_production
-  username: linguist
+  username: deploy
   password: <%= ENV['LINGUIST_DATABASE_PASSWORD'] %>
