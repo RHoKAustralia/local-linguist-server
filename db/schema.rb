@@ -127,8 +127,6 @@ ActiveRecord::Schema.define(version: 20151205215226) do
 
   create_table "phrases", force: :cascade do |t|
     t.string   "english_text"
-    t.string   "image_url"
-    t.string   "audio_url"
     t.text     "choices",            default: [],              array: true
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
