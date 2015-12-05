@@ -23,7 +23,7 @@
 
     <tbody>
       <%= content_tag_for(:tr, @recordings) do |recording| %>
-            <td><%= recording.audio_url %></td>
+            <td><%= recording.audio.to_s %></td>
             <td><%= recording.recorded %></td>
             <td><%= recording.interview %></td>
             <td><%= recording.language %></td>
