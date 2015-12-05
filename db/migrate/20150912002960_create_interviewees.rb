@@ -7,6 +7,7 @@ class CreateInterviewees < ActiveRecord::Migration
       t.string :gender
       t.string :occupation
       t.string :education_level
+      t.integer :age
 
       t.timestamps null: false
     end

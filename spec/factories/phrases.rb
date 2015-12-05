@@ -2,16 +2,16 @@ FactoryGirl.define do
   sequence :phrase_text do |n|
     "English Text #{n}"
   end
-  sequence :audio do |n|
-    "Audio #{n}"
+  sequence :audio_url do |n|
+    "/phrases/#{n}/audio"
   end
-  sequence :image do |n|
-    "Image #{n}"
+  sequence :image_url do |n|
+    "/phrases/#{n}/image"
   end
 
   factory :phrase do |p|
     p.english_text { generate(:phrase_text) }
-    p.audio { generate(:audio) }
-    p.image { generate(:image) }
+    p.audio_url { generate(:audio_url) }
+    p.image_url { generate(:image_url) }
   end
 end
