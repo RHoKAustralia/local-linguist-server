@@ -3,7 +3,7 @@ lock '3.4.0'
 
 server '45.79.129.214', port: 16_888, roles: [:web, :app, :db], primary: true
 
-set :repo_url, 'git@github.com:RHoKAustralia/local-linguist-server.git'
+set :repo_url, 'https://github.com/RHoKAustralia/local-linguist-server.git'
 set :application, 'linguist'
 set :user, 'deploy'
 set :puma_threads,    [4, 16]

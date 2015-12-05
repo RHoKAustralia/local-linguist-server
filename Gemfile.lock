@@ -326,6 +326,7 @@ DEPENDENCIES
   capistrano-rvm
   capistrano3-puma
   coffee-rails (~> 4.1.0)
+  execjs
   factory_girl_rails
   flay
   flog
