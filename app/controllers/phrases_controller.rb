@@ -62,13 +62,19 @@ class PhrasesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_phrase
-      @phrase = Phrase.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def phrase_params
-      params.require(:phrase).permit(:english_text, :audio, :image)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_phrase
+    @phrase = Phrase.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list.
+  def phrase_params
+    params.require(:phrase).permit(
+      :english_text,
+      :audio,
+      :image,
+      :choices,
+      :response_type_id)
+  end
 end
