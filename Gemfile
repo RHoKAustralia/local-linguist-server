@@ -35,6 +35,16 @@ gem 'paperclip', '~> 4.3'
 # Using scaffolds to knock this out fast
 gem 'bootstrap-generators', '~> 3.3.4'
 
+group :development do
+    gem 'capistrano',         require: false
+    gem 'capistrano-rvm',     require: false
+    gem 'capistrano-rails',   require: false
+    gem 'capistrano-bundler', require: false
+    gem 'capistrano3-puma',   require: false
+end
+
+gem 'puma'
+
 group :development, :test do
   gem 'factory_girl_rails'
 
