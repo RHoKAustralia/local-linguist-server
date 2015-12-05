@@ -6,8 +6,7 @@ class Phrase < ActiveRecord::Base
   has_many :recordings
   has_many :studies, through: :phrase_study
 
-  has_attached_file \
-    :image
+  has_attached_file :image
   has_attached_file \
     :audio,
     url: '/phrases/:class/:id/:attachment/:style.:extension',
