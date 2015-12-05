@@ -23,8 +23,8 @@
     <tbody>
       <%= content_tag_for(:tr, @phrases) do |phrase| %>
             <td><%= phrase.english_text %></td>
-            <td><%= phrase.audio.to_s %></td>
-            <td><%= phrase.image.to_s %></td>
+            <td><%= audio_tag phrase.audio_file_name, controls: true, autoplay: false %></td>
+            <td><%= image_tag phrase.image.url %></td>
             <td><%= phrase.choices.join(', ') %></td>
             <td><%= link_to 'Show', phrase %></td>
         <td><%= link_to 'Edit', edit_phrase_path(phrase) %></td>

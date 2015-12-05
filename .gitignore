@@ -21,3 +21,6 @@
 # Ignore lock and temp files
 Gemfile.lock
 .*~
+
+# Ignore the public/system folder where images and audio are kept
+/public/system

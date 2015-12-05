@@ -12,7 +12,7 @@
 
 <dl class="dl-horizontal">
   <dt>Audio:</dt>
-  <dd><%= @recording.audio %></dd>
+  <dd><%= audio_tag @recording.audio_file_name, controls: true, autoplay: false %></dd>
 
   <dt>Recorded:</dt>
   <dd><%= @recording.recorded %></dd>
