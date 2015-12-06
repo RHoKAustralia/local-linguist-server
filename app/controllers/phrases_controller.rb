@@ -14,7 +14,7 @@ class PhrasesController < ApplicationController
 
   # GET /phrases/new
   def new
-    @phrase = Phrase.new
+    @phrase = Phrase.new(choices: [])
   end
 
   # GET /phrases/1/edit
@@ -70,11 +70,14 @@ class PhrasesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list.
   def phrase_params
-    params.require(:phrase).permit(
-      :english_text,
-      :audio,
-      :image,
-      :choices,
-      :response_type_id)
+    choices = parsed_choices
+    params[:phrase][:choices] = choices
+    params.require(:phrase) \
+      .permit(:english_text, :audio, :image, :response_type_id, choices: [])
+  end
+
+  def parsed_choices
+    return [] if params[:phrase].nil? || params[:phrase][:choices].nil?
+    params[:phrase][:choices].split(',').map(&:strip)
   end
 end
