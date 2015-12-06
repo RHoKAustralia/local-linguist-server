@@ -1,6 +1,17 @@
 class InterviewsController < ApplicationController
   before_action :set_interview, only: [:show, :edit, :update, :destroy]
 
+  # PUT /interviews/upload
+  def upload
+   respond_to do |format|
+      if save_uploaded_interview
+        format.json { render :show, status: :created, location: @interview }
+      else
+        format.json { render json: @interview.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # GET /interviews
   # GET /interviews.json
   def index
@@ -62,13 +73,45 @@ class InterviewsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_interview
-      @interview = Interview.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def interview_params
-      params.require(:interview).permit(:interview_time, :study_id, :interviewer_id, :interviewee_id, :locale_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_interview
+    @interview = Interview.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def interview_params
+    params.require(:interview).permit(:interview_time, :study_id, :interviewer_id, :interviewee_id, :locale_id)
+  end
+
+  def upload_params
+    params.require(:interview).permit(
+      :interview_time,
+      :study_id,
+      recordings: [
+        :text_response, :interview_id,
+        :language_id, :phrase_id, :audio],
+      interviewer: [
+        :name, :email,
+        :device_id, :mobile
+      ],
+      interviewee: [
+        :age, :bornDistrict, :bornMunicipality, :bornVillage, :education_level,
+        :livesInMunicipality, :livesInVillage, :name, :occuption,
+        :secondLanguage, :primaryLanguage]
+    )
+  end
+
+  def save_uploaded_interview
+    uploaded_interview = upload_params
+    interviewee = Interviewee.first_or_create(uploaded_interview[:interviewee])
+    interviewer = Interviewer.first_or_create(uploaded_interview[:interviwer])
+    @interview = Interview.first_or_create(
+      interview_time: uploaded_interview[:interview_time],
+      study_id: uploaded_interview[:study_id],
+      locale_id: uploaded_interview[:locale_id],
+      interviewer_id: interviewer.id,
+      interviewee_id: interviewee.id)
+    interviewee.valid? && interviewer.valid? && @interview.valid?
+   end
 end
