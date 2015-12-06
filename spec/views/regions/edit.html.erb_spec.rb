@@ -15,7 +15,7 @@ RSpec.describe "regions/edit", type: :view do
 
       assert_select "input#region_name[name=?]", "region[name]"
 
-      assert_select "input#region_country[name=?]", "region[country]"
+      assert_select "select#region_country_id[name=?]", "region[country_id]"
     end
   end
 end
