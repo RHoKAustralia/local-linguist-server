@@ -5,6 +5,7 @@
 class Phrase < ActiveRecord::Base
   has_many :recordings
   has_many :studies, through: :phrase_study
+  serialize :choices, Array
 
   has_attached_file :image
   has_attached_file :audio

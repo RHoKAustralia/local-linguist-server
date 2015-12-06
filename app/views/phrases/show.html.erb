@@ -15,9 +15,11 @@
   <dd><%= @phrase.english_text %></dd>
 
   <dt>Audio:</dt>
-  <dd><%= audio_tag @phrase.audio_file_name, controls: true, autoplay: false %></dd>
+  <dd><%= audio_tag @phrase.audio.url, controls: true, autoplay: false %></dd>
 
   <dt>Image:</dt>
   <dd><%= image_tag @phrase.image.url %></dd>
 
+  <dt>Choices:</dt>
+  <dd><%= @phrase.choices.join(', ') %></dd>
 </dl>
