@@ -3,8 +3,10 @@
 # @author Craig Read
 class Study < ActiveRecord::Base
   belongs_to :language
-  has_many :phrases, through: :phrase_study
-  has_many :locales, through: :locale_study
+  has_many :phrase_studies
+  has_many :locale_studies
+  has_many :phrases, through: :phrase_studies
+  has_many :locales, through: :locale_studies
 
   def to_s
     name
