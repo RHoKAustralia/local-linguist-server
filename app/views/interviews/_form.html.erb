@@ -21,25 +21,25 @@
   <div class="form-group">
     <%= f.label :study, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.text_field :study, class: "form-control" %>
+      <%= f.collection_select(:study_id, Study.all, :id, :name, class: "form-control") %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :interviewer, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.text_field :interviewer, class: "form-control" %>
+      <%= f.collection_select(:interviewer_id, Interviewer.all, :id, :name, class: "form-control") %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :interviewee, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.text_field :interviewee, class: "form-control" %>
+      <%= f.collection_select(:interviewee_id, Interviewee.all, :id, :name, class: "form-control") %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :locale, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.text_field :locale, class: "form-control" %>
+      <%= f.collection_select(:locale_id, Locale.all, :id, :full_name, class: "form-control") %>
     </div>
   </div>
   <div class="form-group">

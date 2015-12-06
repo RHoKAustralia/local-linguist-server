@@ -7,6 +7,9 @@ class Locale < ActiveRecord::Base
   has_many :studies, through: :locale_study
   has_many :interviews
 
+  def full_name
+    "#{municipality.region.name} - #{municipality.name} - #{name}"
+  end
   def to_s
     name
   end
