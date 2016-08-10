@@ -7,6 +7,8 @@ class Interview < ActiveRecord::Base
   belongs_to :interviewer
   belongs_to :interviewee
   belongs_to :locale
+  has_many :recordings
+  accepts_nested_attributes_for :study, :interviewer, :interviewee, :locale, :recordings
 
   delegate :name, to: :study, prefix: :study, nil: true
   delegate :name, to: :interviewer, prefix: :interviewer, nil: true

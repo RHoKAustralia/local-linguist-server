@@ -3,7 +3,7 @@ class InterviewsController < ApplicationController
 
   # PUT /interviews/upload
   def upload
-   respond_to do |format|
+    respond_to do |format|
       if save_uploaded_interview
         format.json { render :show, status: :created, location: @interview }
       else
@@ -86,26 +86,30 @@ class InterviewsController < ApplicationController
 
   def upload_params
     params.require(:interview).permit(
+      :id, :interviewee_id, :interviewer_id, :locale_id,
       :interview_time,
       :study_id,
       recordings: [
         :text_response, :interview_id,
-        :language_id, :phrase_id, :audio],
+        :language_id, :phrase_id, :audio_url],
       interviewer: [
         :name, :email,
         :device_id, :mobile
       ],
       interviewee: [
-        :age, :bornDistrict, :bornMunicipality, :bornVillage, :education_level,
-        :livesInMunicipality, :livesInVillage, :name, :occuption,
-        :secondLanguage, :primaryLanguage]
+        :personid, :age, :bornDistrict, :bornMunicipality, :bornVillage,
+        :education, :livesInMunicipality, :livesInVillage, :name, :occuption,
+        :firstLanguage, :secondLanguage, :thirdLanguage, :fourthLanguage,
+        :livedWholeLife, :livedInYears
+      ]
     )
+    require 'pry'; binding.pry
   end
 
   def save_uploaded_interview
     uploaded_interview = upload_params
-    interviewee = Interviewee.first_or_create(uploaded_interview[:interviewee])
-    interviewer = Interviewer.first_or_create(uploaded_interview[:interviwer])
+    interviewee = Interviewee.first_or_create(params[:interviewee])
+    interviewer = Interviewer.first_or_create(params[:interviewer])
     @interview = Interview.first_or_create(
       interview_time: uploaded_interview[:interview_time],
       study_id: uploaded_interview[:study_id],
@@ -113,5 +117,5 @@ class InterviewsController < ApplicationController
       interviewer_id: interviewer.id,
       interviewee_id: interviewee.id)
     interviewee.valid? && interviewer.valid? && @interview.valid?
-   end
+  end
 end
