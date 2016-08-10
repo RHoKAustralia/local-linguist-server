@@ -103,7 +103,6 @@ class InterviewsController < ApplicationController
         :livedWholeLife, :livedInYears
       ]
     )
-    require 'pry'; binding.pry
   end
 
   def save_uploaded_interview
