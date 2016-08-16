@@ -9,6 +9,8 @@ class Recording < ActiveRecord::Base
 
   has_attached_file :audio
 
+  # TODO: Record text responses
+
   validates :audio, attachment_content_type: {
     content_type: [
       'audio/mpeg', 'audio/x-mpeg', 'audio/mp3', 'audio/x-mp3', 'audio/mpeg3',

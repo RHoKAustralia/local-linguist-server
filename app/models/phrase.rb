@@ -7,6 +7,11 @@ class Phrase < ActiveRecord::Base
   has_many :studies, through: :phrase_study
   serialize :choices, Array
 
+  # TODO: Validate these response type ids
+  TYPE_TEXT = 1
+  TYPE_AUDIO = 2
+  TYPE_TEXT_AUDIO = 3
+
   has_attached_file :image
   has_attached_file :audio
 

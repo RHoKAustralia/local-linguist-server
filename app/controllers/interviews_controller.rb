@@ -1,7 +1,7 @@
 class InterviewsController < ApplicationController
   before_action :set_interview, only: [:show, :edit, :update, :destroy]
 
-  # PUT /interviews/upload
+  # POST /interviews/upload
   def upload
     respond_to do |format|
       if save_uploaded_interview
@@ -81,7 +81,9 @@ class InterviewsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def interview_params
-    params.require(:interview).permit(:interview_time, :study_id, :interviewer_id, :interviewee_id, :locale_id)
+    params.require(:interview).
+      permit(:interview_time, :study_id, :interviewer_id,
+             :interviewee_id, :locale_id)
   end
 
   def upload_params
@@ -89,9 +91,10 @@ class InterviewsController < ApplicationController
       :id, :interviewee_id, :interviewer_id, :locale_id,
       :interview_time,
       :study_id,
-      recordings: [
-        :text_response, :interview_id,
-        :language_id, :phrase_id, :audio_url],
+      {
+        responses: [:text_response, :interview_id,
+                    :language_id, :phrase_id, :audio_url]
+      },
       interviewer: [
         :name, :email,
         :device_id, :mobile
@@ -107,14 +110,17 @@ class InterviewsController < ApplicationController
 
   def save_uploaded_interview
     uploaded_interview = upload_params
-    interviewee = Interviewee.first_or_create(params[:interviewee])
-    interviewer = Interviewer.first_or_create(params[:interviewer])
+    interviewee = Interviewee.first_or_create(uploaded_interview[:interviewee])
+    interviewer = Interviewer.first_or_create(uploaded_interview[:interviewer])
     @interview = Interview.first_or_create(
       interview_time: uploaded_interview[:interview_time],
       study_id: uploaded_interview[:study_id],
       locale_id: uploaded_interview[:locale_id],
       interviewer_id: interviewer.id,
       interviewee_id: interviewee.id)
+
+    # TODO: get the audio url and associate the recording with the interview
+
     interviewee.valid? && interviewer.valid? && @interview.valid?
   end
 end

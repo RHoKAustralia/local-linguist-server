@@ -8,6 +8,8 @@ class Study < ActiveRecord::Base
   has_many :phrases, through: :phrase_studies
   has_many :locales, through: :locale_studies
 
+  # TODO: Move language relationship to the interview
+
   def to_s
     name
   end
