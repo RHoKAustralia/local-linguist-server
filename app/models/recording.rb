@@ -7,7 +7,7 @@ class Recording < ActiveRecord::Base
   belongs_to :language
   belongs_to :phrase
 
-  has_attached_file :audio
+  has_attached_file :audio, path: '/user/:profile_name/:class/:attachment/:basename.:extension', default_url: ''
 
   # TODO: Record text responses
 

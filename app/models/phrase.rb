@@ -12,8 +12,8 @@ class Phrase < ActiveRecord::Base
   TYPE_AUDIO = 2
   TYPE_TEXT_AUDIO = 3
 
-  has_attached_file :image
-  has_attached_file :audio
+  has_attached_file :image, path: '/user/:profile_name/:class/:attachment/:basename.:extension', default_url: ''
+  has_attached_file :audio, path: '/user/:profile_name/:class/:attachment/:basename.:extension', default_url: ''
 
   validates :audio, attachment_content_type: {
     content_type: [
