@@ -87,7 +87,7 @@ class InterviewsController < ApplicationController
   end
 
   def upload_params
-    params.require(:interview).permit(
+    @upload_params = params.require(:interview).permit(
       :id, :interviewee_id, :interviewer_id, :locale_id,
       :interview_time,
       :study_id,
@@ -106,6 +106,7 @@ class InterviewsController < ApplicationController
         :livedWholeLife, :livedInYears
       ]
     )
+    @upload_params
   end
 
   def save_uploaded_interview
