@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151205215226) do
+ActiveRecord::Schema.define(version: 20160823101431) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,8 +82,9 @@ ActiveRecord::Schema.define(version: 20151205215226) do
 
   create_table "languages", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "language_code"
   end
 
   create_table "locale_studies", force: :cascade do |t|
@@ -152,6 +153,7 @@ ActiveRecord::Schema.define(version: 20151205215226) do
     t.string   "audio_content_type"
     t.integer  "audio_file_size"
     t.datetime "audio_updated_at"
+    t.string   "text_resposne"
   end
 
   add_index "recordings", ["interview_id"], name: "index_recordings_on_interview_id", using: :btree
