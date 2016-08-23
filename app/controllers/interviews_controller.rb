@@ -79,43 +79,39 @@ class InterviewsController < ApplicationController
     @interview = Interview.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
-  def interview_params
-    params.require(:interview).
-      permit(:interview_time, :study_id, :interviewer_id,
-             :interviewee_id, :locale_id)
+  # Never trust parameters from the scary internet, only allow the white list
+  def upload_params
+    params.require(:interview)
   end
 
-  def upload_params
-    @upload_params = params.require(:interview).permit(
-      :locale_id, :interview_time, :study_id,
-      responses: [:text_response, :language_id, :phrase_id, :audio_url],
-      recordings: [:language_id, :phrase_id, :text_response, :audio_url],
-      interviewer: [:name, :email, :device_id, :mobile],
-      interviewee: [
-        :personid, :age, :bornDistrict, :bornMunicipality, :bornVillage,
-        :education, :livesInMunicipality, :livesInVillage, :name, :occuption,
-        :firstLanguage, :secondLanguage, :thirdLanguage, :fourthLanguage,
-        :livedWholeLife, :livedInYears
-      ]
-    )
-    @upload_params
+  def recordings_params
+    params.require(:interview).require(:recordings)
+  end
+
+  def interviewee_params
+    params.require(:interviewee)
+  end
+
+  def interviewer_params
+    params.require(:interviewer)
   end
 
   def save_uploaded_interview
-    uploaded_interview = upload_params
-    interviewee = Interviewee.first_or_create(uploaded_interview[:interviewee])
-    interviewer = Interviewer.first_or_create(uploaded_interview[:interviewer])
+    interviewee = Interviewee.first_or_create(interviewee_params)
+    interviewer = Interviewer.first_or_create(interviewer_params)
     @interview = Interview.first_or_create(
-      interview_time: uploaded_interview[:interview_time],
-      study_id: uploaded_interview[:study_id],
-      locale_id: uploaded_interview[:locale_id],
+      interview_time: upload_params[:interview_time],
+      study_id: upload_params[:study_id],
+      locale_id: upload_params[:locale_id],
       interviewer_id: interviewer.id,
       interviewee_id: interviewee.id)
     if @interview.valid?
-      uploaded_interview.responses.each do |resp|
-        r = Recording.first_or_create(resp)
-        r.save
+      if recordings_params
+        recordings_params.each do |resp|
+          r = Recording.first_or_create(
+            resp.permit([:interview_time, :locale_id, :recordings, :study_id]))
+          r.save
+        end
       end
     end
 
