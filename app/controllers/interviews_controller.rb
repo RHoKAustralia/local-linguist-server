@@ -88,17 +88,10 @@ class InterviewsController < ApplicationController
 
   def upload_params
     @upload_params = params.require(:interview).permit(
-      :id, :interviewee_id, :interviewer_id, :locale_id,
-      :interview_time,
-      :study_id,
-      {
-        responses: [:text_response, :interview_id,
-                    :language_id, :phrase_id, :audio_url]
-      },
-      interviewer: [
-        :name, :email,
-        :device_id, :mobile
-      ],
+      :locale_id, :interview_time, :study_id,
+      responses: [:text_response, :language_id, :phrase_id, :audio_url],
+      recordings: [:language_id, :phrase_id, :text_response, :audio_url],
+      interviewer: [:name, :email, :device_id, :mobile],
       interviewee: [
         :personid, :age, :bornDistrict, :bornMunicipality, :bornVillage,
         :education, :livesInMunicipality, :livesInVillage, :name, :occuption,
@@ -119,8 +112,15 @@ class InterviewsController < ApplicationController
       locale_id: uploaded_interview[:locale_id],
       interviewer_id: interviewer.id,
       interviewee_id: interviewee.id)
+    if @interview.valid?
+      uploaded_interview.responses.each do |resp|
+        r = Recording.first_or_create(resp)
+        r.save
+      end
+    end
 
     # TODO: get the audio url and associate the recording with the interview
+    # TODO: Create Answer model to associate answers with an interview
 
     interviewee.valid? && interviewer.valid? && @interview.valid?
   end
