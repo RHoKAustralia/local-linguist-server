@@ -8,8 +8,9 @@ class Interview < ActiveRecord::Base
   belongs_to :interviewee
   belongs_to :locale
   has_many :recordings
-  accepts_nested_attributes_for :study, :interviewer, :interviewee, :locale,
-                                :recordings
+
+  has_attached_file :zipfile, path: File.join(Rails.root, 'public/system/:class/:attachment/:basename.:extension'), default_url: ''
+  validates :zipfile, attachment_content_type: { content_type: ['application/zip'] }
 
   delegate :name, to: :study, prefix: :study, nil: true
   delegate :name, to: :interviewer, prefix: :interviewer, nil: true
