@@ -29,7 +29,7 @@
         <td><%= interview.interviewer %></td>
         <td><%= interview.interviewee %></td>
         <td><%= interview.locale %></td>
-        <td><%= link_to 'Zip file', interview.zipfile.url %></td>
+        <td><%= link_to 'Download', interview.zipfile.url %></td>
         <td><%= link_to 'Show', interview %></td>
         <td><%= link_to 'Edit', edit_interview_path(interview) %></td>
         <td><%= link_to 'Destroy', interview, method: :delete, data: { confirm: 'Are you sure?' } %></td>

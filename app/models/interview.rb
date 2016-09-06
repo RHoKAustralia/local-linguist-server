@@ -9,7 +9,10 @@ class Interview < ActiveRecord::Base
   belongs_to :locale
   has_many :recordings
 
-  has_attached_file :zipfile, path: File.join(Rails.root, 'public/system/:class/:attachment/:basename.:extension'), default_url: ''
+  has_attached_file :zipfile,
+                    url: '/assets/:class/:id/:style/:basename.:extension',
+                    path: ':rails_root/public/assets/:class/:id/:style/:basename.:extension'
+
   validates :zipfile, attachment_content_type: { content_type: ['application/zip'] }
 
   delegate :name, to: :study, prefix: :study, nil: true

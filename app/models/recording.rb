@@ -7,7 +7,9 @@ class Recording < ActiveRecord::Base
   belongs_to :language
   belongs_to :phrase
 
-  has_attached_file :audio, path: File.join(Rails.root, 'public/system/:class/:attachment/:basename.:extension'), default_url: ''
+  has_attached_file :audio,
+                    url: '/assets/:class/:id/:style/:basename.:extension',
+                    path: ':rails_root/public/assets/:class/:id/:style/:basename.:extension'
 
   # TODO: Record text responses
 
