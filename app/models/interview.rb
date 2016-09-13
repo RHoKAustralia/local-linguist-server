@@ -47,18 +47,13 @@ class Interview < ActiveRecord::Base
   end
 
   def save_interview_responses
-    save_audio
     interview_responses.each do |response|
       text_response = response.fetch('text_response', '')
-      unless text_response.empty?
-        puts response
-      end
-    end
-  end
-
-  def save_audio
-    @audio_entries.each do |audio_file|
-      puts audio_file
+      audio_response = response.fetch('audio_response', nil)
+      recording = recordings.where(phrase_id: response.fetch('phrase_id', nil)).first_or_create
+      recording.audio = audio_response.get_input_stream.read if audio_response
+      recording.text_response = text_response
+      recording.save
     end
   end
 

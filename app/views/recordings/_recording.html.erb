@@ -1,0 +1,19 @@
+<h2>Recordings</h2>
+
+<dl class="dl-horizontal">
+  <dt>Audio:</dt>
+  <dd><%= audio_tag recording.audio.url, controls: true, autoplay: false %></dd>
+
+  <dt>Recorded:</dt>
+  <dd><%= recording.recorded %></dd>
+
+  <dt>Interview:</dt>
+  <dd><%= recording.interview %></dd>
+
+  <dt>Language:</dt>
+  <dd><%= recording.language %></dd>
+
+  <dt>Phrase:</dt>
+  <dd><%= recording.phrase %></dd>
+
+</dl>
