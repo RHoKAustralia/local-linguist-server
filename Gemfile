@@ -34,6 +34,9 @@ gem 'rubyzip', '>= 1.0.0'
 # Upload images and files with paperclip
 gem 'paperclip', '~> 4.3'
 
+gem 'cocoon'
+gem 'nested_form'
+
 # Using scaffolds to knock this out fast
 gem 'bootstrap-generators', '~> 3.3.4'
 

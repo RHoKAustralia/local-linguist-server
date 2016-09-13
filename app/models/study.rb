@@ -8,6 +8,8 @@ class Study < ActiveRecord::Base
   has_many :phrases, through: :phrase_studies
   has_many :locales, through: :locale_studies
 
+  accepts_nested_attributes_for :phrases, :locales
+
   # TODO: Move language relationship to the interview
 
   def to_s

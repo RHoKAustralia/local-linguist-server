@@ -1,13 +1,14 @@
-<%= form_for(@study, html: { class: "form-horizontal", role: "form" }) do |f| %>
+<%= javascript_include_tag :defaults, "nested_form" %>
+<%= nested_form_for @study, html: { class: "form-horizontal", role: "form" } do |f| %>
   <% if @study.errors.any? %>
     <div class="alert alert-danger alert-dismissable" role="alert">
       <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
       <h4><%= pluralize(@study.errors.count, "error") %> prohibited this study from being saved:</h4>
 
       <ul>
-      <% @study.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @study.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -32,42 +33,58 @@
   </div>
 
   <h2>Phrases</h2>
-  <% @study.phrases.each do |phrase| %>
-    <%= fields_for :phrases, phrase do |p| %>
-      <div class="form-group">
-        <%= p.label :english_text, class: "col-sm-2 control-label" %>
-        <div class="col-sm-10">
-          <%= p.text_field :english_text, class: "form-control" %>
-        </div>
-      </div>
-      <div class="form-group">
-        <%= p.label :audio, class: "col-sm-2 control-label" %>
-        <div class="col-sm-10">
-          <%= p.file_field :audio, class: "form-control" %>
-        </div>
-      </div>
-      <div class="form-group">
-        <%= p.label :image, class: "col-sm-2 control-label" %>
-        <div class="col-sm-10">
-          <%= p.file_field :image, class: "form-control" %>
-        </div>
-      </div>
-      <div class="form-group">
-        <%= p.label :response_type_id, class: "col-sm-2 control-label" %>
-        <div class="col-sm-10">
-          <%= p.select(:response_type_id,
-                       options_for_select([['Text', 1], ['Audio', 2], ['Both', 3]]),
-                       class: "form-control") %>
-        </div>
-      </div>
-      <div class="form-group">
-        <%= p.label :choices, class: "col-sm-2 control-label" %>
-        <div class="col-sm-10">
-          <%= p.text_area :choices, class: "form-control" %>
-        </div>
-      </div>
+  <!-- TODO: Convert to table -->
+  <div class="phrases">
+    <%= f.fields_for :phrases do |p| %>
+      <table>
+        <thead>
+          <th>
+            <%= p.label :english_text, class: "col-sm-2 control-label" %>
+          </th>
+          <th>
+            <%= p.label :audio, class: "col-sm-2 control-label" %>
+          </th>
+          <th>
+            <%= p.label :image, class: "col-sm-2 control-label" %>
+          </th>
+          <th>
+            <%= p.label :response_type_id, class: "col-sm-2 control-label" %>
+          </th>
+          <th>
+            <%= p.label :choices, class: "col-sm-2 control-label" %>
+          </th>
+          <th>
+          </th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <%= p.text_field :english_text, class: "form-control" %>
+            </td>
+            <td>
+              <%= p.file_field :audio, class: "form-control" %>
+            </td>
+            <td>
+              <%= p.file_field :image, class: "form-control" %>
+            </td>
+            <td>
+              <%= p.select(:response_type_id,
+                           options_for_select([['Text', 1], ['Audio', 2], ['Both', 3]]),
+                           class: "form-control") %>
+
+            </td>
+            <td>
+              <%= p.text_area :choices, class: "form-control" %>
+            </td>
+            <td>
+              <%= p.link_to_remove 'Remove', class: 'btn btn-delete' %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <%= f.link_to_add 'Add Phrase', :phrases, class: 'btn btn-primary' %>
     <% end %>
-  <% end %>
+  </div>
 
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">

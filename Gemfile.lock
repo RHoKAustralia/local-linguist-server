@@ -91,6 +91,7 @@ GEM
       activesupport (>= 3.0)
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
+    cocoon (1.2.9)
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -176,6 +177,7 @@ GEM
     mutant-rspec (0.8.8)
       mutant (~> 0.8.8)
       rspec-core (>= 3.2.0, < 3.5.0)
+    nested_form (0.3.2)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (3.0.1)
@@ -344,6 +346,7 @@ DEPENDENCIES
   capistrano-rails
   capistrano-rvm
   capistrano3-puma
+  cocoon
   coffee-rails (~> 4.1.0)
   factory_girl_rails
   flay
@@ -351,6 +354,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   mutant-rspec
+  nested_form
   paperclip (~> 4.3)
   pg
   pry-byebug
