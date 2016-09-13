@@ -33,7 +33,32 @@ class Interview < ActiveRecord::Base
     Zip::File.open(zipfile.path) do |zip_file|
       @json_entry = zip_file.glob('*.json').first
       @audio_entries = zip_file.glob('*.mp4')
-      validate_zip_file && save_zipped_interview
+      validate_zip_file && save_interview_responses
+    end
+  end
+
+  def zipped_interview
+    data = @json_entry.get_input_stream.read
+    data ? JSON.parse(data) : {}
+  end
+
+  def interview_responses
+    zipped_interview.fetch('interview', {}).fetch('recordings', [])
+  end
+
+  def save_interview_responses
+    save_audio
+    interview_responses.each do |response|
+      text_response = response.fetch('text_response', '')
+      unless text_response.empty?
+        puts response
+      end
+    end
+  end
+
+  def save_audio
+    @audio_entries.each do |audio_file|
+      puts audio_file
     end
   end
 
@@ -42,16 +67,10 @@ class Interview < ActiveRecord::Base
     validate_audio_entries
   end
 
-  def save_zipped_interview
-    require 'pry-byebug'; binding.pry
-  end
-
   def validate_audio_entries
     return true if @audio_entries.empty?
-    json_recordings = zipped_interview
-                      .fetch('interview', {}).fetch('recordings', [])
-    json_recordings.each do |recording|
-      audio_url = recording.fetch('audio_url', '')
+    interview_responses.each do |response|
+      audio_url = response.fetch('audio_url', '')
       return false unless validate_audio_url(audio_url)
     end
     true
@@ -60,20 +79,5 @@ class Interview < ActiveRecord::Base
   def validate_audio_url(audio_url)
     return true if audio_url.empty?
     @audio_entries.map(&:name).include? audio_url
-  end
-
-  def zipped_interview
-    data = @json_entry.get_input_stream.read
-    data ? JSON.parse(data) : {}
-  end
-
-  def save_uploaded_interview
-  end
-
-  def save_interview_data(json)
-    puts json
-  end
-
-  def save_audio(zip_file)
   end
 end
