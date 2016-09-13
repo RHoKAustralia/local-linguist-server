@@ -7,6 +7,9 @@
 # Ignore bundler config.
 /.bundle
 
+# local bundle installation
+vendor/bundle
+
 # Ignore ruby version
 ./ruby-version
 
