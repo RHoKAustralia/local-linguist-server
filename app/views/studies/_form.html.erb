@@ -30,6 +30,45 @@
       <%= f.collection_select(:language_id, Language.all, :id, :name, class: "form-control") %>
     </div>
   </div>
+
+  <h2>Phrases</h2>
+  <% @study.phrases.each do |phrase| %>
+    <%= fields_for :phrases, phrase do |p| %>
+      <div class="form-group">
+        <%= p.label :english_text, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= p.text_field :english_text, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= p.label :audio, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= p.file_field :audio, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= p.label :image, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= p.file_field :image, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= p.label :response_type_id, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= p.select(:response_type_id,
+                       options_for_select([['Text', 1], ['Audio', 2], ['Both', 3]]),
+                       class: "form-control") %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= p.label :choices, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= p.text_area :choices, class: "form-control" %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <%= f.submit class: "btn btn-primary" %>
