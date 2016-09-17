@@ -10,6 +10,7 @@ class MunicipalitiesController < ApplicationController
   # GET /municipalities/1
   # GET /municipalities/1.json
   def show
+    @locales = @municipality.locales
   end
 
   # GET /municipalities/new

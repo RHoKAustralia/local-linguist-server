@@ -6,26 +6,4 @@
   <h1>Listing locales</h1>
 </div>
 
-<div class="table-responsive">
-  <table class="table table-striped table-bordered table-hover">
-    <thead>
-      <tr>
-            <th>Name</th>
-            <th>Municipality</th>
-            <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <%= content_tag_for(:tr, @locales) do |locale| %>
-            <td><%= locale.name %></td>
-            <td><%= locale.municipality %></td>
-            <td><%= link_to 'Show', locale %></td>
-        <td><%= link_to 'Edit', edit_locale_path(locale) %></td>
-        <td><%= link_to 'Destroy', locale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+<%= render "table" %>
