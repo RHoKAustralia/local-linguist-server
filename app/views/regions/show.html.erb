@@ -15,6 +15,9 @@
   <dd><%= @region.name %></dd>
 
   <dt>Country:</dt>
-  <dd><%= @region.country %></dd>
+  <dd><%= link_to @region.country, @region.country %></dd>
 
 </dl>
+
+<h2>Municipalities of <%= @region.name %></h2>
+<%= render "municipalities/table" %>

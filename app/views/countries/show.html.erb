@@ -16,7 +16,5 @@
 
 </dl>
 
-<h2>Regions</h2>
-<ul>
-  <%= render @country.regions %>
-</ul>
+<h2>Regions of <%= @country.name =%></h2>
+<%= render partial: "regions/table", locals: { regions: @country.regions } %>

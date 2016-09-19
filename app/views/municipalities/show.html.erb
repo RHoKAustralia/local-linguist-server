@@ -15,6 +15,9 @@
   <dd><%= @municipality.name %></dd>
 
   <dt>Region:</dt>
-  <dd><%= @municipality.region %></dd>
+  <dd><%= link_to @municipality.region, @municipality.region %></dd>
 
 </dl>
+
+<h2>Locales of <%= @municipality.name %></h2>
+<%= render "locales/table" %>
