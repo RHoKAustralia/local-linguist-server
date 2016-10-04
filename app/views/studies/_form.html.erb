@@ -33,58 +33,25 @@
   </div>
 
   <h2>Phrases</h2>
-  <!-- TODO: Convert to table -->
-  <div class="phrases">
+  <dl class="dl-horizontal">
     <%= f.fields_for :phrases do |p| %>
-      <table>
-        <thead>
-          <th>
-            <%= p.label :english_text, class: "col-sm-2 control-label" %>
-          </th>
-          <th>
-            <%= p.label :audio, class: "col-sm-2 control-label" %>
-          </th>
-          <th>
-            <%= p.label :image, class: "col-sm-2 control-label" %>
-          </th>
-          <th>
-            <%= p.label :response_type_id, class: "col-sm-2 control-label" %>
-          </th>
-          <th>
-            <%= p.label :choices, class: "col-sm-2 control-label" %>
-          </th>
-          <th>
-          </th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <%= p.text_field :english_text, class: "form-control" %>
-            </td>
-            <td>
-              <%= p.file_field :audio, class: "form-control" %>
-            </td>
-            <td>
-              <%= p.file_field :image, class: "form-control" %>
-            </td>
-            <td>
-              <%= p.select(:response_type_id,
-                           options_for_select([['Text', 1], ['Audio', 2], ['Both', 3]]),
-                           class: "form-control") %>
-
-            </td>
-            <td>
-              <%= p.text_area :choices, class: "form-control" %>
-            </td>
-            <td>
-              <%= p.link_to_remove 'Remove', class: 'btn btn-delete' %>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <%= f.link_to_add 'Add Phrase', :phrases, class: 'btn btn-primary' %>
+        <label class="col-sm-2 control-label">English Text</label>
+        <%= p.text_field :english_text, class: "form-control col-sm-2" %>
+        <label class="col-sm-2 control-label">Audio</label>
+        <%= p.file_field :audio, class: "form-control" %>
+        <label class="col-sm-2 control-label">Image</label>
+        <%= p.file_field :image, class: "form-control" %>
+        <label class="col-sm-2 control-label">Response Type</label>
+        <%= p.select(:response_type_id,
+                     options_for_select([['Text', 1], ['Audio', 2], ['Both', 3]]),
+                     class: "form-control") %>
+        <label class="col-sm-2 control-label">Choices</label>
+        <%= p.text_area :choices, class: "form-control" %>
+        <%= p.link_to_remove 'Remove', class: 'btn btn-delete' %>
+      </p>
     <% end %>
-  </div>
+    <p><%= f.link_to_add "Add a phrase", :phrases %></p>
+  </dl>
 
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">

@@ -62,13 +62,16 @@ class StudiesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_study
-      @study = Study.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_study
+    @study = Study.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def study_params
-      params.require(:study).permit(:name, :start_date, :language_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def study_params
+    params.require(:study)
+      .permit(:name, :start_date, :language_id,
+              phrases_attributes: [:id, :english_text, :response_type_id,
+                                   :choices, :_destroy])
+  end
 end

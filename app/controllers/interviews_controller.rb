@@ -74,14 +74,6 @@ class InterviewsController < ApplicationController
     @interview = Interview.find(params[:id])
   end
 
-  def save_recordings
-    return false if @interview.nil? || recordings_params.empty?
-    # TODO: Work out if the recording exists for this interview
-    recordings_params.each do |resp|
-      @interview.recordings << Recording.first_or_create(resp)
-    end
-  end
-
   def save_interview(interviewee, interviewer)
     @interview = Interview.first_or_create(
       interview_time: upload_params[:interview_time],
@@ -89,17 +81,5 @@ class InterviewsController < ApplicationController
       locale_id: upload_params[:locale_id],
       interviewer_id: interviewer.id,
       interviewee_id: interviewee.id)
-  end
-
-  def save_uploaded_interview
-    interviewee = Interviewee.first_or_create(interviewee_params)
-    interviewer = Interviewer.first_or_create(interviewer_params)
-    save_interview(interviewee, interviewer)
-    save_recordings if @interview.valid?
-
-    # TODO: get the audio url and associate the recording with the interview
-    # TODO: Create Answer model to associate answers with an interview
-
-    interviewee.valid? && interviewer.valid? && @interview.valid?
   end
 end

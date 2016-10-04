@@ -1,9 +1,4 @@
-<h2>Recordings</h2>
-
 <dl class="dl-horizontal">
-  <dt>Audio:</dt>
-  <dd><%= audio_tag recording.audio.url, controls: true, autoplay: false %></dd>
-
   <dt>Recorded:</dt>
   <dd><%= recording.recorded %></dd>
 
@@ -16,4 +11,8 @@
   <dt>Phrase:</dt>
   <dd><%= recording.phrase %></dd>
 
+  <% if recording.audio_file_name  %>
+    <dt>Audio:</dt>
+    <dd><%= audio_tag recording.audio.url, controls: true, autoplay: false %></dd>
+  <% end %>
 </dl>

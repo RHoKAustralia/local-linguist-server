@@ -5,12 +5,12 @@ require 'zip'
 #
 # @author Craig Read
 class Interview < ActiveRecord::Base
-  after_commit :extract_zip
+  after_commit :extract_zip, on: [:create, :update]
   belongs_to :study
   belongs_to :interviewer
   belongs_to :interviewee
   belongs_to :locale
-  has_many :recordings
+  has_many :recordings, dependent: :delete_all
 
   has_attached_file :zipfile,
                     url: '/assets/:class/:id/:style/:basename.:extension',
@@ -48,11 +48,21 @@ class Interview < ActiveRecord::Base
 
   def save_interview_responses
     interview_responses.each do |response|
-      text_response = response.fetch('text_response', '')
-      audio_response = response.fetch('audio_response', nil)
       recording = recordings.where(phrase_id: response.fetch('phrase_id', nil)).first_or_create
-      recording.audio = audio_response.get_input_stream.read if audio_response
+
+      text_response = response.fetch('text_response', '')
       recording.text_response = text_response
+
+      audio_url = response.fetch('audio_url', nil)
+      audio_response = @audio_entries.select { |a| a.name == audio_url }.first if audio_url
+      if audio_response
+        audio_file = StringIO.open(audio_response.get_input_stream.read)
+        audio_file.class.class_eval { attr_accessor :original_filename, :content_type }
+        audio_file.original_filename = audio_response.name
+        audio_file.content_type = 'video/mp4' # TODO: WTF is this video?
+        recording.audio = audio_file
+      end
+
       recording.save
     end
   end

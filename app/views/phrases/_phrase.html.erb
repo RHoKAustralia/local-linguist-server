@@ -1,14 +1,16 @@
-<h2>Phrases</h2>
-
 <dl class="dl-horizontal">
   <dt>English text:</dt>
   <dd><%= phrase.english_text %></dd>
 
-  <dt>Audio:</dt>
-  <dd><%= audio_tag phrase.audio.url, controls: true, autoplay: false %></dd>
+  <% if phrase.audio %>
+    <dt>Audio:</dt>
+    <dd><%= audio_tag phrase.audio.url, controls: true, autoplay: false %></dd>
+  <% end %>
 
-  <dt>Image:</dt>
-  <dd><%= image_tag phrase.image.url %></dd>
+  <% if phrase.image %>
+    <dt>Image:</dt>
+    <dd><%= image_tag phrase.image.url %></dd>
+  <% end %>
 
   <dt>Choices:</dt>
   <dd><%= phrase.choices.join(', ') %></dd>
