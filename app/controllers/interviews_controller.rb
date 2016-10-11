@@ -73,13 +73,4 @@ class InterviewsController < ApplicationController
   def set_interview
     @interview = Interview.find(params[:id])
   end
-
-  def save_interview(interviewee, interviewer)
-    @interview = Interview.first_or_create(
-      interview_time: upload_params[:interview_time],
-      study_id: upload_params[:study_id],
-      locale_id: upload_params[:locale_id],
-      interviewer_id: interviewer.id,
-      interviewee_id: interviewee.id)
-  end
 end

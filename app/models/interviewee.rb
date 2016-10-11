@@ -2,6 +2,7 @@
 #
 # @author Craig Read
 class Interviewee < ActiveRecord::Base
+  belongs_to :locale
   has_many :languages, through: :interviewee_language
   has_many :interviews
 

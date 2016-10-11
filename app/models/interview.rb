@@ -5,6 +5,7 @@ require 'zip'
 #
 # @author Craig Read
 class Interview < ActiveRecord::Base
+  include ApplicationHelper
   after_commit :extract_zip, on: [:create, :update]
   belongs_to :study
   belongs_to :interviewer
@@ -33,6 +34,7 @@ class Interview < ActiveRecord::Base
     Zip::File.open(zipfile.path) do |zip_file|
       @json_entry = zip_file.glob('*.json').first
       @audio_entries = zip_file.glob('*.mp4')
+      save_interviewee if interviewee.nil? && validate_interviewee
       validate_zip_file && save_interview_responses
     end
   end
@@ -65,6 +67,30 @@ class Interview < ActiveRecord::Base
 
       recording.save
     end
+  end
+
+  def validate_interviewee
+    return false if zipped_interview.fetch('interviewee', {}).empty?
+    true
+  end
+
+  def save_interviewee
+    itve = zipped_interview.fetch('interviewee', {})
+    return if itve.empty?
+    # TODO: The order of these seems WRONG!
+    itve['locale_id'] ||= find_locale_id(itve['livesInMunicipality'],
+                                         itve['livesInDistrict'],
+                                         itve['livesInVillage'])
+    interviewee = Interviewee.find_or_create_by(
+      name: itve['name'],
+      age: itve['age'],
+      education_level: itve['education_level'],
+      first_language: itve['first_language'],
+      gender: itve['gender'],
+      occupation: itve['occupation'],
+      lived_whole_life: itve['lived_whole_life'],
+      locale_id: itve['locale_id'])
+    self.interviewee = interviewee
   end
 
   def validate_zip_file
