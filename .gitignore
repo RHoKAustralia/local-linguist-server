@@ -13,6 +13,9 @@ vendor/bundle
 # Ignore ruby version
 ./ruby-version
 
+# Ignore erd file
+./erd.pdf
+
 # Ignore all logfiles and tempfiles.
 /log/*
 !/log/.keep
@@ -27,3 +30,8 @@ Gemfile.lock
 
 # Ignore the public/system folder where images and audio are kept
 /public/system
+
+# Ignore the uploaded assets
+./public/assets/interviews
+./public/assets/phrases
+./public/assets/recordings
