@@ -1,13 +1,15 @@
+require 'zip'
+
 class UploadedInterview
   include ApplicationHelper
+  attr_accessor :interviewee
 
   def initialize(params)
-    @zipfile = params.filename
+    @zipfile = params[:file]
   end
 
   def extract_zip
-    require 'pry-byebug'; binding.pry
-    Zip::File.open(zipfile.tempfile) do |zip_file|
+    Zip::File.open(@zipfile[:tempfile]) do |zip_file|
       @json_entry = zip_file.glob('*.json').first
       @audio_entries = zip_file.glob('*.mp4')
       save_interview
@@ -24,12 +26,19 @@ class UploadedInterview
   end
 
   def save_interview
+    Rails.logger.debug interview_params
     @interview = Interview.create(interview_params)
   end
 
+  # TODO: interviewer and interviewee
   def interview_params
-    keys = [:interview_time, :study_id]
-    Hash[*keys.zip(zipped_interview[:interview].values_at(*keys))]
+    zi = zipped_interview['interview']
+    {
+      study_id: zi['study_id'],
+      interview_time: DateTime.strptime(zi['interview_time'], '/Date(%s-0000)/'),
+      locale_id: zi['locale_id'],
+      language_id: zi['language_id']
+    }
   end
 
   def interview_responses
