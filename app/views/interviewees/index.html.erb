@@ -16,6 +16,10 @@
             <th>Gender</th>
             <th>Occupation</th>
             <th>Education level</th>
+            <th>Age</th>
+            <th>Locale</th>
+            <th>Always lived there?</th>
+            <th>First Language</th>
             <th></th>
         <th></th>
         <th></th>
@@ -30,6 +34,10 @@
             <td><%= interviewee.gender %></td>
             <td><%= interviewee.occupation %></td>
             <td><%= interviewee.education_level %></td>
+            <td><%= interviewee.age %></td>
+            <td><%= interviewee.locale %></td>
+            <td><%= interviewee.lived_whole_life %></td>
+            <td><%= interviewee.first_language %></td>
             <td><%= link_to 'Show', interviewee %></td>
         <td><%= link_to 'Edit', edit_interviewee_path(interviewee) %></td>
         <td><%= link_to 'Destroy', interviewee, method: :delete, data: { confirm: 'Are you sure?' } %></td>

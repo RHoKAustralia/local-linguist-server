@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161011074944) do
+ActiveRecord::Schema.define(version: 20170308075359) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,17 +21,6 @@ ActiveRecord::Schema.define(version: 20161011074944) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  create_table "interviewee_languages", force: :cascade do |t|
-    t.boolean  "primary_language"
-    t.integer  "language_id"
-    t.integer  "interviewee_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-  end
-
-  add_index "interviewee_languages", ["interviewee_id"], name: "index_interviewee_languages_on_interviewee_id", using: :btree
-  add_index "interviewee_languages", ["language_id"], name: "index_interviewee_languages_on_language_id", using: :btree
 
   create_table "interviewees", force: :cascade do |t|
     t.string   "name"
@@ -69,23 +58,13 @@ ActiveRecord::Schema.define(version: 20161011074944) do
     t.string   "zipfile_content_type"
     t.integer  "zipfile_file_size"
     t.datetime "zipfile_updated_at"
+    t.integer  "language_id"
   end
 
   add_index "interviews", ["interviewee_id"], name: "index_interviews_on_interviewee_id", using: :btree
   add_index "interviews", ["interviewer_id"], name: "index_interviews_on_interviewer_id", using: :btree
   add_index "interviews", ["locale_id"], name: "index_interviews_on_locale_id", using: :btree
   add_index "interviews", ["study_id"], name: "index_interviews_on_study_id", using: :btree
-
-  create_table "language_locales", force: :cascade do |t|
-    t.boolean  "primary_language"
-    t.integer  "language_id"
-    t.integer  "locale_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-  end
-
-  add_index "language_locales", ["language_id"], name: "index_language_locales_on_language_id", using: :btree
-  add_index "language_locales", ["locale_id"], name: "index_language_locales_on_locale_id", using: :btree
 
   create_table "languages", force: :cascade do |t|
     t.string   "name"
@@ -123,16 +102,6 @@ ActiveRecord::Schema.define(version: 20161011074944) do
 
   add_index "municipalities", ["region_id"], name: "index_municipalities_on_region_id", using: :btree
 
-  create_table "phrase_studies", force: :cascade do |t|
-    t.integer  "phrase_id"
-    t.integer  "study_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "phrase_studies", ["phrase_id"], name: "index_phrase_studies_on_phrase_id", using: :btree
-  add_index "phrase_studies", ["study_id"], name: "index_phrase_studies_on_study_id", using: :btree
-
   create_table "phrases", force: :cascade do |t|
     t.string   "english_text"
     t.text     "choices",            default: [],              array: true
@@ -147,6 +116,7 @@ ActiveRecord::Schema.define(version: 20161011074944) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "response_type_id"
+    t.integer  "study_id"
   end
 
   create_table "recordings", force: :cascade do |t|
@@ -179,30 +149,20 @@ ActiveRecord::Schema.define(version: 20161011074944) do
   create_table "studies", force: :cascade do |t|
     t.string   "name"
     t.date     "start_date"
-    t.integer  "language_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "studies", ["language_id"], name: "index_studies_on_language_id", using: :btree
-
-  add_foreign_key "interviewee_languages", "interviewees"
-  add_foreign_key "interviewee_languages", "languages"
   add_foreign_key "interviews", "interviewees"
   add_foreign_key "interviews", "interviewers"
   add_foreign_key "interviews", "locales"
   add_foreign_key "interviews", "studies"
-  add_foreign_key "language_locales", "languages"
-  add_foreign_key "language_locales", "locales"
   add_foreign_key "locale_studies", "locales"
   add_foreign_key "locale_studies", "studies"
   add_foreign_key "locales", "municipalities"
   add_foreign_key "municipalities", "regions"
-  add_foreign_key "phrase_studies", "phrases"
-  add_foreign_key "phrase_studies", "studies"
   add_foreign_key "recordings", "interviews"
   add_foreign_key "recordings", "languages"
   add_foreign_key "recordings", "phrases"
   add_foreign_key "regions", "countries"
-  add_foreign_key "studies", "languages"
 end

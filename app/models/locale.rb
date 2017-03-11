@@ -3,10 +3,10 @@
 # @author Craig Read
 class Locale < ActiveRecord::Base
   belongs_to :municipality
-  has_many :languages, through: :language_locale
-  has_many :studies, through: :locale_study
   has_many :interviews
-  has_many :interviewees
+  has_many :interviewees, through: :interviews
+  has_many :languages, through: :interviews
+  has_many :studies, through: :interviews
 
   def full_name
     "#{municipality.region.name} - #{municipality.name} - #{name}"
