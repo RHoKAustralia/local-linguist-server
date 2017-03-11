@@ -3,8 +3,9 @@
 #
 # @author Craig Read
 class Phrase < ActiveRecord::Base
-  has_many :recordings
-  has_many :studies, through: :phrase_study
+  belongs_to :study
+  has_many :interviews, through: :study
+  has_many :recordings, through: :interviews
 
   TYPE_TEXT = 1
   TYPE_AUDIO = 2

@@ -12,7 +12,6 @@
       <tr>
             <th>Name</th>
             <th>Start date</th>
-            <th>Language</th>
             <th></th>
         <th></th>
         <th></th>
@@ -23,7 +22,6 @@
       <%= content_tag_for(:tr, @studies) do |study| %>
             <td><%= study.name %></td>
             <td><%= study.start_date %></td>
-            <td><%= study.language %></td>
             <td><%= link_to 'Show', study %></td>
         <td><%= link_to 'Edit', edit_study_path(study) %></td>
         <td><%= link_to 'Destroy', study, method: :delete, data: { confirm: 'Are you sure?' } %></td>

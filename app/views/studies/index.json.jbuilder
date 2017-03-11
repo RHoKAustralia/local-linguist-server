@@ -1,5 +1,5 @@
 json.array!(@studies) do |study|
-  json.extract! study, :id, :name, :start_date, :language_id
+  json.extract! study, :id, :name, :start_date
   json.url study_url(study, format: :json)
 
   json.phrases study.phrases do |phrase|
