@@ -73,7 +73,7 @@ class PhrasesController < ApplicationController
     choices = parsed_choices
     params[:phrase][:choices] = choices
     params.require(:phrase) \
-      .permit(:english_text, :audio, :image, :response_type_id, choices: [])
+      .permit(:study_id, :english_text, :audio, :image, :response_type_id, choices: [])
   end
 
   def parsed_choices

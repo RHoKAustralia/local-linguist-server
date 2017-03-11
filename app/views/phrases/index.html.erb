@@ -10,6 +10,7 @@
   <table class="table table-striped table-bordered table-hover">
     <thead>
       <tr>
+            <th>Study</th>
             <th>English text</th>
             <th>Audio</th>
             <th>Image</th>
@@ -22,6 +23,7 @@
 
     <tbody>
       <%= content_tag_for(:tr, @phrases) do |phrase| %>
+        <td><%= phrase.study.try(:name) %></td>
             <td><%= phrase.english_text %></td>
             <td><%= audio_tag phrase.audio.url, controls: true, autoplay: false %></td>
             <td><%= image_tag phrase.image.url %></td>
