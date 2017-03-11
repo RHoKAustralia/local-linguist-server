@@ -53,6 +53,8 @@ group :development do
 end
 
 gem 'puma'
+gem 'grape'
+gem 'hashie-forbidden_attributes'
 
 group :development, :test do
   gem 'factory_girl_rails'

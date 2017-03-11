@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   resources :interviews
   resources :phrases
 
+  mount Linguist::API => '/api/'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
