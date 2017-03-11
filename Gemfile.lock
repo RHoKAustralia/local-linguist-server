@@ -48,6 +48,10 @@ GEM
     ast (2.1.0)
     astrolabe (1.3.1)
       parser (~> 2.2)
+    axiom-types (0.1.1)
+      descendants_tracker (~> 0.0.4)
+      ice_nine (~> 0.11.0)
+      thread_safe (~> 0.3, >= 0.3.1)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -93,6 +97,8 @@ GEM
       climate_control (>= 0.0.3, < 1.0)
     cocoon (1.2.9)
     coderay (1.1.0)
+    coercible (1.0.0)
+      descendants_tracker (~> 0.0.1)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -105,6 +111,8 @@ GEM
       equalizer (~> 0.0.9)
     concurrent-ruby (1.0.0)
     debug_inspector (0.0.2)
+    descendants_tracker (0.0.4)
+      thread_safe (~> 0.3, >= 0.3.1)
     diff-lcs (1.2.5)
     docile (1.1.5)
     equalizer (0.0.11)
@@ -124,8 +132,21 @@ GEM
       sexp_processor (~> 4.4)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    grape (0.18.0)
+      activesupport
+      builder
+      hashie (>= 2.1.0)
+      multi_json (>= 1.3.2)
+      multi_xml (>= 0.5.2)
+      mustermann-grape (~> 0.4.0)
+      rack (>= 1.3.0)
+      rack-accept
+      virtus (>= 1.0.0)
     haml (4.0.7)
       tilt
+    hashie (3.4.6)
+    hashie-forbidden_attributes (0.1.1)
+      hashie (>= 3.0)
     highline (1.7.8)
     i18n (0.7.0)
     ice_nine (0.11.1)
@@ -159,6 +180,11 @@ GEM
       ice_nine (~> 0.11.0)
       procto (~> 0.0.2)
     multi_json (1.11.2)
+    multi_xml (0.5.5)
+    mustermann (0.4.0)
+      tool (~> 0.2)
+    mustermann-grape (0.4.0)
+      mustermann (= 0.4.0)
     mutant (0.8.8)
       abstract_type (~> 0.0.7)
       adamantium (~> 0.2.0)
@@ -206,6 +232,8 @@ GEM
       pry (>= 0.9.10)
     puma (2.15.3)
     rack (1.6.4)
+    rack-accept (0.4.5)
+      rack (>= 0.4)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.5)
@@ -314,6 +342,7 @@ GEM
     thread_safe (0.3.5)
     tilt (2.0.1)
     tins (1.6.0)
+    tool (0.2.3)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.7.2)
@@ -327,6 +356,11 @@ GEM
       equalizer (~> 0.0.9)
       parser (~> 2.2.2)
       procto (~> 0.0.2)
+    virtus (1.0.5)
+      axiom-types (~> 0.1)
+      coercible (~> 1.0)
+      descendants_tracker (~> 0.0, >= 0.0.3)
+      equalizer (~> 0.0, >= 0.0.9)
     web-console (2.2.1)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -351,6 +385,8 @@ DEPENDENCIES
   factory_girl_rails
   flay
   flog
+  grape
+  hashie-forbidden_attributes
   jbuilder (~> 2.0)
   jquery-rails
   mutant-rspec
