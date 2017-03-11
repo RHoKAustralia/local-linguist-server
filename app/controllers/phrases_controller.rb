@@ -40,6 +40,7 @@ class PhrasesController < ApplicationController
   # PATCH/PUT /phrases/1
   # PATCH/PUT /phrases/1.json
   def update
+    # TODO: Add multiple form fields for choices
     respond_to do |format|
       if @phrase.update(phrase_params)
         format.html { redirect_to @phrase, notice: 'Phrase was successfully updated.' }
@@ -70,14 +71,8 @@ class PhrasesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list.
   def phrase_params
-    choices = parsed_choices
-    params[:phrase][:choices] = choices
+    params[:phrase][:choices] = params[:phrase][:choices].split("\r\n")
     params.require(:phrase) \
       .permit(:study_id, :english_text, :audio, :image, :response_type_id, choices: [])
-  end
-
-  def parsed_choices
-    return [] if params[:phrase].nil? || params[:phrase][:choices].nil?
-    params[:phrase][:choices].split(',').map(&:strip)
   end
 end

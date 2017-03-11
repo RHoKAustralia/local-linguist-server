@@ -3,7 +3,7 @@ json.array!(@studies) do |study|
   json.url study_url(study, format: :json)
 
   json.phrases study.phrases do |phrase|
-    json.extract! phrase, :id, :english_text, :audio, :image, :response_type_id
+    json.extract! phrase, :id, :english_text, :audio, :image, :response_type_id, :choices
     json.url phrase_url(phrase, format: :json)
   end
 end
