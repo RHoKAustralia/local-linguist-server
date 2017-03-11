@@ -69,6 +69,6 @@ class RecordingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recording_params
-      params.require(:recording).permit(:audio, :recorded, :interview_id, :language_id, :phrase_id)
+      params.require(:recording).permit(:audio, :recorded, :interview_id, :language_id, :phrase_id, :text_response)
     end
 end

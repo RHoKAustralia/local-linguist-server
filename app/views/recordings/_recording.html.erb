@@ -15,4 +15,9 @@
     <dt>Audio:</dt>
     <dd><%= audio_tag recording.audio.url, controls: true, autoplay: false %></dd>
   <% end %>
+
+  <% if recording.text_response  %>
+    <dt>Text response:</dt>
+    <dd><%= recording.text_response %></dd>
+  <% end %>
 </dl>
