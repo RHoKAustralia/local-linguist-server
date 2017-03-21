@@ -32,6 +32,6 @@ Gemfile.lock
 /public/system
 
 # Ignore the uploaded assets
-./public/assets/interviews
-./public/assets/phrases
-./public/assets/recordings
+./public/assets/interviews/
+./public/assets/phrases/
+./public/assets/recordings/

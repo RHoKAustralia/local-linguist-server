@@ -1,17 +1,20 @@
+require 'zip'
+
 class UploadedInterview
   include ApplicationHelper
+  attr_accessor :interview, :interviewee, :interviewer, :language
 
   def initialize(params)
-    @zipfile = params.filename
+    @zipfile = params[:file]
   end
 
   def extract_zip
-    require 'pry-byebug'; binding.pry
-    Zip::File.open(zipfile.tempfile) do |zip_file|
+    Zip::File.open(@zipfile[:tempfile]) do |zip_file|
       @json_entry = zip_file.glob('*.json').first
       @audio_entries = zip_file.glob('*.mp4')
       save_interview
-      save_interviewee if interviewee.nil? && validate_interviewee
+      save_interviewee if interviewee.nil?
+      save_interviewer if interviewer.nil?
       validate_zip_file && save_interview_responses
     end
   end
@@ -28,8 +31,13 @@ class UploadedInterview
   end
 
   def interview_params
-    keys = [:interview_time, :study_id]
-    Hash[*keys.zip(zipped_interview[:interview].values_at(*keys))]
+    zi = zipped_interview['interview']
+    {
+      study_id: zi['study_id'],
+      interview_time: DateTime.strptime(zi['interview_time'], '/Date(%s-0000)/'),
+      locale_id: zi['locale_id'],
+      language_id: zi['language_id']
+    }
   end
 
   def interview_responses
@@ -61,15 +69,10 @@ class UploadedInterview
     recording.audio = audio_file
   end
 
-  def validate_interviewee
-    return false if zipped_interview.fetch('interviewee', {}).empty?
-    true
-  end
-
   def save_interviewee
     itve = zipped_interview.fetch('interviewee', {})
     return if itve.empty?
-    # TODO: The order of these seems WRONG!
+
     itve['locale_id'] ||= find_locale_id(itve['livesInMunicipality'],
                                          itve['livesInDistrict'],
                                          itve['livesInVillage'])
@@ -82,7 +85,23 @@ class UploadedInterview
       occupation: itve['occupation'],
       lived_whole_life: itve['lived_whole_life'],
       locale_id: itve['locale_id'])
-    self.interviewee = interviewee
+    interview.interviewee = interviewee
+    # TODO: This should be the language the interview was performed in
+    interview.language = Language.find_by_name(itve['first_language'])
+    # TODO: Should this be where the interview occurred, not where the participant lived?
+    interview.locale ||= Locale.find(itve['locale_id'])
+  end
+
+  def save_interviewer
+    itvr = zipped_interview.fetch('interviewer', {})
+    return if itvr.empty?
+
+    interviewer = Interviewer.find_or_create_by(
+      name: itvr['name'],
+      mobile: itvr['mobile'],
+      device_id: itvr['device_id'],
+      email: itvr['email'])
+    interview.interviewer = interviewer
   end
 
   def validate_zip_file

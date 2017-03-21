@@ -71,7 +71,7 @@ class PhrasesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list.
   def phrase_params
-    params[:phrase][:choices] = params[:phrase][:choices].split("\r\n")
+    params[:phrase][:choices] = (params[:phrase][:choices] || []).split("\r\n")
     params.require(:phrase) \
       .permit(:study_id, :english_text, :audio, :image, :response_type_id, choices: [])
   end
