@@ -1,4 +1,3 @@
-<%= javascript_include_tag :defaults, "nested_form" %>
 <%= nested_form_for @study, html: { class: "form-horizontal", role: "form" } do |f| %>
   <% if @study.errors.any? %>
     <div class="alert alert-danger alert-dismissable" role="alert">
@@ -31,4 +30,54 @@
       <%= f.submit class: "btn btn-primary" %>
     </div>
   </div>
+
+  <%= f.fields_for :phrases, @study.phrases do |phrase| %>
+    <div class="form-group">
+      <%= phrase.label :english_text, class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= phrase.text_field :english_text, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= phrase.label :audio, class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= phrase.file_field :audio, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= phrase.label :image, class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= phrase.file_field :image, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= phrase.label :response_type_id, class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= phrase.select(:response_type_id,
+                          options_for_select([['Text', 1], ['Audio', 2], ['Both', 3]]),
+                          class: "form-control") %>
+      </div>
+    </div>
+    <!-- todo: fix this bullshit -->
+    <div class="form-group">
+      <%= phrase.label :choices, class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%# phrase.choices.each do |choice| %>
+        <%#= phrase.text_field :choices, name: "phrase[choices][]", as: :array, class: "form-control" %>
+        <%# end %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= phrase.link_to_remove "Remove this phrase", class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.link_to_add "Add a phrase", :phrases, class: "btn btn-primary" %>
+    </div>
+  </div>
+
 <% end %>
