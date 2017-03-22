@@ -9,7 +9,6 @@ class Study < ActiveRecord::Base
   has_many :locales, through: :interviews
 
   accepts_nested_attributes_for :phrases, allow_destroy: true
-  accepts_nested_attributes_for :locales
 
   def to_s
     name
