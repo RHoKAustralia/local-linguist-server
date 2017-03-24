@@ -16,6 +16,7 @@ class UploadedInterview
       save_interviewee if interviewee.nil?
       save_interviewer if interviewer.nil?
       validate_zip_file && save_interview_responses
+      interview.save
     end
   end
 
