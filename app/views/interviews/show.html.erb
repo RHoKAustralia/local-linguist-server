@@ -32,4 +32,7 @@
 </dl>
 
 <h2>Recordings</h2>
-<%= render @interview.recordings %>
+<% @interview.recordings.each do |recording| %>
+  <hr>
+  <%= render recording %>
+<% end %>
