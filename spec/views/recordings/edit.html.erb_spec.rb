@@ -19,8 +19,6 @@ RSpec.describe "recordings/edit", type: :view do
 
       assert_select "select#recording_interview_id[name=?]", "recording[interview_id]"
 
-      assert_select "select#recording_language_id[name=?]", "recording[language_id]"
-
       assert_select "select#recording_phrase_id[name=?]", "recording[phrase_id]"
     end
   end
