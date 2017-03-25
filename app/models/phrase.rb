@@ -5,7 +5,7 @@
 class Phrase < ActiveRecord::Base
   belongs_to :study
   has_many :interviews, through: :study
-  has_many :recordings, through: :interviews
+  has_many :recordings, dependent: :destroy
 
   TYPE_TEXT = 1
   TYPE_AUDIO = 2
