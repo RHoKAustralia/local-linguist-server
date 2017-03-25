@@ -58,22 +58,10 @@
                           class: "form-control") %>
       </div>
     </div>
-    <!-- todo: fix this bullshit -->
     <div class="form-group">
       <%= phrase.label :choices, class: "col-sm-2 control-label" %>
       <div class="col-sm-10">
-        <% choices = phrase.object.choices || [''] %>
-        <% choices.each do |choice| %>
-          <%# throw params %>
-           <%= phrase.text_field :to_s, name: "phrase[choices][]", class: "form-control" %>
-        <% end %>
-        <%# phrase.text_area :choices, name: "phrase[choices][]", as: :array, class: "form-control" %>
-        <%# phrase.fields_for :choices, phrase.object.choices do |choice| %>
-        <%#= choice.text_field :choice, class: "form-control" %>
-        <%# end %>
-        <%# phrase.choices.each do |choice| %>
-        <%#= phrase.text_field :choices, name: "phrase[choices][]", as: :array, class: "form-control" %>
-        <%# end %>
+        <%= phrase.text_field :string_choices, class: "form-control" %>
       </div>
     </div>
     <div class="form-group">
