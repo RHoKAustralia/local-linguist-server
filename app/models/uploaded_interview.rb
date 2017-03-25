@@ -37,7 +37,7 @@ class UploadedInterview
       study_id: zi['study_id'],
       interview_time: DateTime.strptime(zi['interview_time'], '/Date(%s-0000)/'),
       locale_id: zi['locale_id'],
-      language_id: zi['language_id']
+      language_id: Language.find_by_name(zi['response_language'])
     }
   end
 
@@ -87,9 +87,6 @@ class UploadedInterview
       lived_whole_life: itve['lived_whole_life'],
       locale_id: itve['locale_id'])
     interview.interviewee = interviewee
-    # TODO: This should be the language the interview was performed in
-    interview.language = Language.find_by_name(itve['first_language'])
-    # TODO: Should this be where the interview occurred, not where the participant lived?
     interview.locale ||= Locale.find(itve['locale_id'])
   end
 
