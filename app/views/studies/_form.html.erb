@@ -54,7 +54,7 @@
       <%= phrase.label :response_type_id, class: "col-sm-2 control-label" %>
       <div class="col-sm-10">
         <%= phrase.select(:response_type_id,
-                          options_for_select([['Text', 1], ['Audio', 2], ['Both', 3]]),
+                          options_for_select({ 'Text' => 1, 'Audio' => 2, 'Both' => 3 }, phrase.object.response_type_id),
                           class: "form-control") %>
       </div>
     </div>
