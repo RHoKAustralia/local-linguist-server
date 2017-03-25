@@ -13,9 +13,10 @@ class Phrase < ActiveRecord::Base
 
   UPLOAD_PATH = ':rails_root/public/assets/:class/:id/:style/:basename.:extension'
   URL = '/assets/:class/:id/:style/:basename.:extension'
+  DEFAULT_URL = '/assets/missing.png'
 
-  has_attached_file :image, url: URL, path: UPLOAD_PATH
-  has_attached_file :audio, url: URL, path: UPLOAD_PATH
+  has_attached_file :image, url: URL, path: UPLOAD_PATH, default_url: DEFAULT_URL
+  has_attached_file :audio, url: URL, path: UPLOAD_PATH, default_url: DEFAULT_URL
 
   validates :audio, attachment_content_type: {
               content_type: [
@@ -24,6 +25,15 @@ class Phrase < ActiveRecord::Base
                 'audio/x-m4a'
               ]
             }
+
+  def string_choices=(value)
+    choices_will_change!
+    self.choices = value.split('|')
+  end
+
+  def string_choices
+    choices.join('|')
+  end
 
   def to_s
     english_text
