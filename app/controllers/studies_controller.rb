@@ -72,6 +72,6 @@ class StudiesController < ApplicationController
     params.require(:study)
       .permit(:name, :start_date, :language_id,
               phrases_attributes: [:id, :english_text, :response_type_id,
-                                   :string_choices, :_destroy])
+                                   :image, :audio, :string_choices, :_destroy])
   end
 end
