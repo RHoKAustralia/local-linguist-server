@@ -15,7 +15,8 @@ class Interview < ActiveRecord::Base
 
   has_attached_file :zipfile,
                     url: '/assets/:class/:id/:style/:basename.:extension',
-                    path: ':rails_root/public/assets/:class/:id/:style/:basename.:extension'
+                    path: ':rails_root/public/assets/:class/:id/:style/:basename.:extension',
+                    default_url: '/assets/missing.png'
 
   validates :zipfile, attachment_content_type:
                         { content_type: ['application/zip'] }

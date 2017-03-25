@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170308075359) do
+ActiveRecord::Schema.define(version: 20170325041438) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,7 +122,6 @@ ActiveRecord::Schema.define(version: 20170308075359) do
   create_table "recordings", force: :cascade do |t|
     t.datetime "recorded"
     t.integer  "interview_id"
-    t.integer  "language_id"
     t.integer  "phrase_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
@@ -134,7 +133,6 @@ ActiveRecord::Schema.define(version: 20170308075359) do
   end
 
   add_index "recordings", ["interview_id"], name: "index_recordings_on_interview_id", using: :btree
-  add_index "recordings", ["language_id"], name: "index_recordings_on_language_id", using: :btree
   add_index "recordings", ["phrase_id"], name: "index_recordings_on_phrase_id", using: :btree
 
   create_table "regions", force: :cascade do |t|
@@ -162,7 +160,6 @@ ActiveRecord::Schema.define(version: 20170308075359) do
   add_foreign_key "locales", "municipalities"
   add_foreign_key "municipalities", "regions"
   add_foreign_key "recordings", "interviews"
-  add_foreign_key "recordings", "languages"
   add_foreign_key "recordings", "phrases"
   add_foreign_key "regions", "countries"
 end
