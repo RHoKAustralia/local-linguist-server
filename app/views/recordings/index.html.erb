@@ -13,7 +13,6 @@
             <th>Audio</th>
             <th>Recorded</th>
             <th>Interview</th>
-            <th>Language</th>
             <th>Phrase</th>
             <th></th>
         <th></th>
@@ -26,7 +25,6 @@
             <td><%= audio_tag recording.audio.url, controls: true, autoplay: false %></td>
             <td><%= recording.recorded %></td>
             <td><%= recording.interview %></td>
-            <td><%= recording.language %></td>
             <td><%= recording.phrase %></td>
             <td><%= link_to 'Show', recording %></td>
         <td><%= link_to 'Edit', edit_recording_path(recording) %></td>
