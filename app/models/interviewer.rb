@@ -5,6 +5,11 @@
 class Interviewer < ActiveRecord::Base
   has_many :interviews
 
+  validates :name, presence: true
+  validates :mobile, presence: true
+  validates :device_id, presence: true
+  validates :email, presence: true
+
   def to_s
     name
   end
