@@ -24,7 +24,6 @@ class InterviewsController < ApplicationController
   # POST /interviews
   # POST /interviews.json
   def create
-    puts interview_params
     @interview = Interview.new(interview_params)
 
     respond_to do |format|

@@ -6,9 +6,5 @@ FactoryGirl.define do
     i.interviewee { |a| a.association(:interviewee) }
     i.locale { |a| a.association(:locale) }
     i.language { |a| a.association(:language) }
-    i.zipfile_file_name 'sample.zip'
-    i.zipfile_content_type 'application/zip'
-    i.zipfile_file_size 10_000
-    i.zipfile_updated_at DateTime.now.utc
   end
 end
