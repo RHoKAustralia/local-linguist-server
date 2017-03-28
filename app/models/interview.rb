@@ -18,8 +18,13 @@ class Interview < ActiveRecord::Base
                     path: ':rails_root/public/assets/:class/:id/:style/:basename.:extension',
                     default_url: '/assets/missing.png'
 
-  validates :zipfile, attachment_content_type:
-                        { content_type: ['application/zip'] }
+  validates :study_id, presence: true
+  validates :interviewer_id, presence: true
+  validates :interviewee_id, presence: true
+  validates :language_id, presence: true
+
+  validates_attachment_content_type :zipfile, content_type: /\Azip/
+  validates_attachment_file_name :zipfile, matches: /zip\z/
 
   delegate :name, to: :study, prefix: :study, nil: true
   delegate :name, to: :language, prefix: :language, nil: true
