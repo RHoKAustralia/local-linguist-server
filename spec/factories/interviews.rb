@@ -5,5 +5,6 @@ FactoryGirl.define do
     i.interviewer { |a| a.association(:interviewer) }
     i.interviewee { |a| a.association(:interviewee) }
     i.locale { |a| a.association(:locale) }
+    i.language { |a| a.association(:language) }
   end
 end

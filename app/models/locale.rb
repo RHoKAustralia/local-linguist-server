@@ -8,6 +8,9 @@ class Locale < ActiveRecord::Base
   has_many :languages, through: :interviews
   has_many :studies, through: :interviews
 
+  validates :name, presence: true
+  validates :municipality_id, presence: true
+
   def full_name
     "#{municipality.region.name} - #{municipality.name} - #{name}"
   end

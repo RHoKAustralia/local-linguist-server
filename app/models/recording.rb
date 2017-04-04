@@ -6,6 +6,9 @@ class Recording < ActiveRecord::Base
   belongs_to :interview
   belongs_to :phrase
 
+  validates :interview_id, presence: true
+  validates :phrase_id, presence: true
+
   has_attached_file :audio,
                     url: '/assets/:class/:id/:style/:basename.:extension',
                     path: ':rails_root/public/assets/:class/:id/:style/:basename.:extension',

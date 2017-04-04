@@ -3,6 +3,7 @@
 # @author Craig Read
 class Country < ActiveRecord::Base
   has_many :regions
+  validates :name, presence: true
 
   def to_s
     name

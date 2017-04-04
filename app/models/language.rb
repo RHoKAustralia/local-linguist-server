@@ -7,6 +7,8 @@ class Language < ActiveRecord::Base
   has_many :interviewees, through: :interviews
   has_many :recordings
 
+  validates :name, presence: true
+
   def to_s
     name
   end

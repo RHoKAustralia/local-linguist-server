@@ -7,6 +7,10 @@ class Phrase < ActiveRecord::Base
   has_many :interviews, through: :study
   has_many :recordings, dependent: :destroy
 
+  validates :english_text, presence: true
+  validates :study_id, presence: true
+  validates :response_type_id, presence: true
+
   TYPE_TEXT = 1
   TYPE_AUDIO = 2
   TYPE_TEXT_AUDIO = 3

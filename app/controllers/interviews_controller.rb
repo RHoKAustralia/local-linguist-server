@@ -64,9 +64,9 @@ class InterviewsController < ApplicationController
   private
 
   def interview_params
-    params.require(:interview).permit([:interview_time, :study_id,
-                                            :zipfile, :interviewer_id,
-                                            :interviewee_id, :locale_id])
+    params.require(:interview).permit(
+      [:interview_time, :study_id, :interviewer_id, :interviewee_id,
+       :language_id, :locale_id])
   end
 
   # Use callbacks to share common setup or constraints between actions.
