@@ -4,7 +4,7 @@ class PhrasesController < ApplicationController
   # GET /phrases
   # GET /phrases.json
   def index
-    @phrases = Phrase.all
+    @phrases = Phrase.order(:id)
   end
 
   # GET /phrases/1
@@ -73,6 +73,6 @@ class PhrasesController < ApplicationController
   def phrase_params
     params[:phrase][:choices] = (params[:phrase][:choices] || []).split("\r\n")
     params.require(:phrase) \
-      .permit(:study_id, :english_text, :audio, :image, :response_type_id, choices: [])
+      .permit(:study_id, :english_text, :prompt_text, :audio, :image, :response_type_id, choices: [])
   end
 end

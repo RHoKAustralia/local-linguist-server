@@ -8,6 +8,7 @@ class Phrase < ActiveRecord::Base
   has_many :recordings, dependent: :destroy
 
   validates :english_text, presence: true
+  validates :prompt_text, presence: true
   validates :study_id, presence: true
   validates :response_type_id, presence: true
 
