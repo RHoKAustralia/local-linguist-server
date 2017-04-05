@@ -5,13 +5,14 @@ RSpec.describe PhrasesController, type: :controller do
   let(:valid_attributes) {
     {
       english_text: 'This is a phrase',
+      prompt_text: 'Type in your response',
       study_id: FactoryGirl.create(:study).id,
       response_type_id: 1
     }
   }
 
   let(:invalid_attributes) {
-    { english_text: nil, study_id: nil, response_type_id: nil }
+    { english_text: nil, prompt_text: nil, study_id: nil, response_type_id: nil }
   }
 
   let(:valid_session) { {} }
