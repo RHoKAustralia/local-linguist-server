@@ -1,6 +1,6 @@
 <dl class="dl-horizontal">
-  <dt>English text:</dt>
-  <dd><%= phrase.english_text %></dd>
+  <dt class="col-sm-2">English text:</dt>
+  <dd class="col-sm-10"><%= phrase.english_text %></dd>
 
   <% if phrase.audio %>
     <dt>Audio:</dt>
@@ -13,5 +13,5 @@
   <% end %>
 
   <dt>Choices:</dt>
-  <dd><%= phrase.choices.join(', ') %></dd>
+  <dd><%= phrase.string_choices %></dd>
 </dl>
