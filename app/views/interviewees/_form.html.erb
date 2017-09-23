@@ -33,44 +33,43 @@
   <div class="form-group">
     <%= f.label :gender, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.text_field :gender, class: "form-control" %>
+      <%= f.select :gender, ['Feto','Mane'], {prompt: 'Please select'}, class: "form-control" %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :occupation, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.text_field :occupation, class: "form-control" %>
+      <%= f.select :occupation, ["To'os na'in", 'Mestre / Mestra', 'Governu', "Loja na'in", 'Xofér', 'La Servisu'], {prompt: 'Please select'}, class: "form-control" %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :education_level, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.text_field :education_level, class: "form-control" %>
+      <%= f.select :education_level, ['Eskola Primária', 'SMP', 'SMA', 'Universidade'], {prompt: 'Please select'}, class: "form-control" %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :age, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.text_field :age, class: "form-control" %>
+      <%= f.number_field :age, class: "form-control" %>
     </div>
   </div>
-  <!-- TODO: Convert to a colleciton select -->
   <div class="form-group">
     <%= f.label :locale_id, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.text_field :locale_id, class: "form-control" %>
+      <%= f.collection_select(:locale_id, Locale.all, :id, :full_name, class: "form-control") %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :lived_whole_life, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.text_field :lived_whole_life, class: "form-control" %>
+      <%= f.check_box :lived_whole_life, class: "form-control" %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :first_language, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.text_field :first_language, class: "form-control" %>
+      <%= f.collection_select(:first_language, Language.all, :id, :name, class: "form-control") %>
     </div>
   </div>
 
