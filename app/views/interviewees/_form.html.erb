@@ -69,7 +69,7 @@
   <div class="form-group">
     <%= f.label :first_language, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.collection_select(:first_language, Language.all, :id, :name, class: "form-control") %>
+      <%= f.collection_select(:first_language, Language.all, :name, :name, class: "form-control") %>
     </div>
   </div>
 
