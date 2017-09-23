@@ -2,14 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "interviewees/edit", type: :view do
   before(:each) do
-    @interviewee = assign(:interviewee, Interviewee.create!(
-      :name => "MyString",
-      :mobile => "MyString",
-      :email => "MyString",
-      :gender => "MyString",
-      :occupation => "MyString",
-      :education_level => "MyString"
-    ))
+    @interviewee = assign(:interviewee, FactoryGirl.create(:interviewee))
   end
 
   it "renders the edit interviewee form" do
@@ -24,6 +17,10 @@ RSpec.describe "interviewees/edit", type: :view do
       assert_select "input#interviewee_email[name=?]", "interviewee[email]"
 
       assert_select "input#interviewee_gender[name=?]", "interviewee[gender]"
+
+      assert_select "input#interviewee_age[name=?]", "interviewee[age]"
+
+      assert_select "input#interviewee_locale_id[name=?]", "interviewee[locale_id]"
 
       assert_select "input#interviewee_occupation[name=?]", "interviewee[occupation]"
 
