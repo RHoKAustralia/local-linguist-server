@@ -25,6 +25,12 @@
     </div>
   </div>
 
+  <div class="container col-sm-offset-2 col-sm-10">
+    <div class="form-group">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+  </div>
+
   <h2>Phrases</h2>
   <%= f.fields_for :phrases, @study.phrases.order(:id) do |phrase| %>
     <hr/>
