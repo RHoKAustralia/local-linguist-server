@@ -23,8 +23,9 @@ class Interview < ActiveRecord::Base
   validates :interviewee_id, presence: true
   validates :language_id, presence: true
 
-  validates_attachment_content_type :zipfile, content_type: /\Azip/
-  validates_attachment_file_name :zipfile, matches: /zip\z/
+  validates_attachment :zipfile, presence: true,
+                       content_type: { content_type: "application/zip" },
+                       size: { in: 0..8192.kilobytes }
 
   delegate :name, to: :study, prefix: :study, nil: true
   delegate :name, to: :language, prefix: :language, nil: true

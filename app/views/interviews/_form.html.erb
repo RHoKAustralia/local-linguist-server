@@ -43,6 +43,12 @@
     </div>
   </div>
   <div class="form-group">
+    <%= f.label :language, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.collection_select(:language_id, Language.all, :id, :name, class: "form-control") %>
+    </div>
+  </div>
+  <div class="form-group">
     <%= f.label :zipfile, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
       <%= f.file_field :zipfile, class: "form-control" %>
