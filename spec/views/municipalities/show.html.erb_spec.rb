@@ -1,14 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe "municipalities/show", type: :view do
+RSpec.describe 'municipalities/show', type: :view do
+  let(:municipality) { FactoryGirl.create(:municipality) }
   before(:each) do
-    @municipality = assign(:municipality, Municipality.create!(
-      :name => "Name",
-      :region => nil
-    ))
+    @municipality = assign(:municipality, municipality)
   end
 
-  it "renders attributes in <p>" do
+  it 'renders attributes in <p>' do
     render
     expect(rendered).to match(/Name/)
     expect(rendered).to match(//)
