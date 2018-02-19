@@ -1,16 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe "studies/show", type: :view do
+RSpec.describe 'studies/show', type: :view do
   before(:each) do
-    @study = assign(:study, Study.create!(
-      :name => "Name",
-      :language => nil
-    ))
+    @study = assign(:study, FactoryGirl.create(:study))
   end
 
-  it "renders attributes in <p>" do
+  it 'renders attributes in <p>' do
     render
     expect(rendered).to match(/Name/)
-    expect(rendered).to match(//)
+    expect(rendered).to match(/Start date/)
   end
 end
