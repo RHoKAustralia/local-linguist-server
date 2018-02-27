@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "recordings/index", type: :view do
-  let(:recording1) { FactoryGirl.create(:recording) }
-  let(:recording2) { FactoryGirl.create(:recording) }
+  let(:recording1) { FactoryBot.create(:recording) }
+  let(:recording2) { FactoryBot.create(:recording) }
 
   before(:each) do
     assign(:recordings, [recording1, recording2])

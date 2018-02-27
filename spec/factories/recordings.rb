@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   sequence :recorded_time do |n|
     DateTime.parse('2017-03-01 17:33:00') + n.seconds
   end

@@ -2,7 +2,7 @@
 # taking recordings for a linguistics study.
 #
 # @author Craig Read
-class Interviewer < ActiveRecord::Base
+class Interviewer < ApplicationRecord
   has_many :interviews
 
   validates :name, presence: true

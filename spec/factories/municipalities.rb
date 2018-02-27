@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   sequence :municipality_name do |n|
     "Municipality #{n}"
   end

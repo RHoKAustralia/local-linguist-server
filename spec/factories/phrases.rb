@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   sequence :phrase_text do |n|
     "English Text #{n}"
   end

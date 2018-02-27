@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'locales/index', type: :view do
-  let(:municipality) { FactoryGirl.create(:municipality) }
+  let(:municipality) { FactoryBot.create(:municipality) }
   before(:each) do
     assign(:locales, [
       Locale.create!(

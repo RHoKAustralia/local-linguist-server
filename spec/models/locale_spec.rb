@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Locale, type: :model do
-  subject { FactoryGirl.create(:locale) }
+  subject { FactoryBot.create(:locale) }
 
   describe '#to_s' do
     it 'returns the name' do

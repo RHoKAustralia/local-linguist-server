@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe IntervieweesController, type: :controller do
 
-  let(:locale) { FactoryGirl.create(:locale) }
+  let(:locale) { FactoryBot.create(:locale) }
   let(:valid_attributes) {
     {
       name: 'Fred',
@@ -34,7 +34,7 @@ RSpec.describe IntervieweesController, type: :controller do
   describe 'GET #index' do
     it 'assigns all interviewees as @interviewees' do
       interviewee = Interviewee.create! valid_attributes
-      get :index, {}, valid_session
+      get :index, params: {}
       expect(assigns(:interviewees)).to eq([interviewee])
     end
   end
@@ -42,14 +42,14 @@ RSpec.describe IntervieweesController, type: :controller do
   describe 'GET #show' do
     it 'assigns the requested interviewee as @interviewee' do
       interviewee = Interviewee.create! valid_attributes
-      get :show, {:id => interviewee.to_param}, valid_session
+      get :show, params: {id:  interviewee}
       expect(assigns(:interviewee)).to eq(interviewee)
     end
   end
 
   describe 'GET #new' do
     it 'assigns a new interviewee as @interviewee' do
-      get :new, {}, valid_session
+      get :new, params: {}
       expect(assigns(:interviewee)).to be_a_new(Interviewee)
     end
   end
@@ -57,7 +57,7 @@ RSpec.describe IntervieweesController, type: :controller do
   describe 'GET #edit' do
     it 'assigns the requested interviewee as @interviewee' do
       interviewee = Interviewee.create! valid_attributes
-      get :edit, {:id => interviewee.to_param}, valid_session
+      get :edit, params: {id:  interviewee}
       expect(assigns(:interviewee)).to eq(interviewee)
     end
   end
@@ -66,30 +66,30 @@ RSpec.describe IntervieweesController, type: :controller do
     context 'with valid params' do
       it 'creates a new Interviewee' do
         expect {
-          post :create, {:interviewee => valid_attributes}, valid_session
+          post :create, params: {interviewee:  valid_attributes}
         }.to change(Interviewee, :count).by(1)
       end
 
       it 'assigns a newly created interviewee as @interviewee' do
-        post :create, {:interviewee => valid_attributes}, valid_session
+        post :create, params: {interviewee:  valid_attributes}
         expect(assigns(:interviewee)).to be_a(Interviewee)
         expect(assigns(:interviewee)).to be_persisted
       end
 
       it 'redirects to the created interviewee' do
-        post :create, {:interviewee => valid_attributes}, valid_session
+        post :create, params: {interviewee:  valid_attributes}
         expect(response).to redirect_to(Interviewee.last)
       end
     end
 
     context 'with invalid params' do
       it 'assigns a newly created but unsaved interviewee as @interviewee' do
-        post :create, {:interviewee => invalid_attributes}, valid_session
+        post :create, params: {interviewee:  invalid_attributes}
         expect(assigns(:interviewee)).to be_a_new(Interviewee)
       end
 
       it "re-renders the 'new' template" do
-        post :create, {:interviewee => invalid_attributes}, valid_session
+        post :create, params: {interviewee:  invalid_attributes}
         expect(response).to render_template('new')
       end
     end
@@ -103,20 +103,20 @@ RSpec.describe IntervieweesController, type: :controller do
 
       it 'updates the requested interviewee' do
         interviewee = Interviewee.create! valid_attributes
-        put :update, {:id => interviewee.to_param, :interviewee => new_attributes}, valid_session
+        put :update, params: {id:  interviewee, interviewee:  new_attributes}
         interviewee.reload
         expect(interviewee.age).to eq 37
       end
 
       it 'assigns the requested interviewee as @interviewee' do
         interviewee = Interviewee.create! valid_attributes
-        put :update, {:id => interviewee.to_param, :interviewee => valid_attributes}, valid_session
+        put :update, params: {id:  interviewee, interviewee:  valid_attributes}
         expect(assigns(:interviewee)).to eq(interviewee)
       end
 
       it 'redirects to the interviewee' do
         interviewee = Interviewee.create! valid_attributes
-        put :update, {:id => interviewee.to_param, :interviewee => valid_attributes}, valid_session
+        put :update, params: {id:  interviewee, interviewee:  valid_attributes}
         expect(response).to redirect_to(interviewee)
       end
     end
@@ -124,13 +124,13 @@ RSpec.describe IntervieweesController, type: :controller do
     context 'with invalid params' do
       it 'assigns the interviewee as @interviewee' do
         interviewee = Interviewee.create! valid_attributes
-        put :update, {:id => interviewee.to_param, :interviewee => invalid_attributes}, valid_session
+        put :update, params: {id:  interviewee, interviewee:  invalid_attributes}
         expect(assigns(:interviewee)).to eq(interviewee)
       end
 
       it "re-renders the 'edit' template" do
         interviewee = Interviewee.create! valid_attributes
-        put :update, {:id => interviewee.to_param, :interviewee => invalid_attributes}, valid_session
+        put :update, params: {id:  interviewee, interviewee:  invalid_attributes}
         expect(response).to render_template('edit')
       end
     end
@@ -140,13 +140,13 @@ RSpec.describe IntervieweesController, type: :controller do
     it 'destroys the requested interviewee' do
       interviewee = Interviewee.create! valid_attributes
       expect {
-        delete :destroy, {:id => interviewee.to_param}, valid_session
+        delete :destroy, params: {id:  interviewee}
       }.to change(Interviewee, :count).by(-1)
     end
 
     it 'redirects to the interviewees list' do
       interviewee = Interviewee.create! valid_attributes
-      delete :destroy, {:id => interviewee.to_param}, valid_session
+      delete :destroy, params: {id:  interviewee}
       expect(response).to redirect_to(interviewees_url)
     end
   end

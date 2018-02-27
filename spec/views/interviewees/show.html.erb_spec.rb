@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "interviewees/show", type: :view do
   before(:each) do
-    @interviewee = assign(:interviewee, FactoryGirl.create(:interviewee))
+    @interviewee = assign(:interviewee, FactoryBot.create(:interviewee))
   end
 
   it "renders attributes in <p>" do

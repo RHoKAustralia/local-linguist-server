@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "interviewees/edit", type: :view do
   before(:each) do
-    @interviewee = assign(:interviewee, FactoryGirl.create(:interviewee))
+    @interviewee = assign(:interviewee, FactoryBot.create(:interviewee))
   end
 
   it "renders the edit interviewee form" do

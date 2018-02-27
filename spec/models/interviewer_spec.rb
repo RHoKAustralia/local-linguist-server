@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Interviewer, type: :model do
-  subject { FactoryGirl.create(:interviewer) }
+  subject { FactoryBot.create(:interviewer) }
 
   describe '#to_s' do
     it 'shows the interviewers name' do

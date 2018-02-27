@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :interview do |i|
     i.interview_time '2015-09-28 17:29:15'
     i.study { |a| a.association(:study) }

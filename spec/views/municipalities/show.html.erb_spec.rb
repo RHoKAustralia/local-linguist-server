@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'municipalities/show', type: :view do
-  let(:municipality) { FactoryGirl.create(:municipality) }
+  let(:municipality) { FactoryBot.create(:municipality) }
   before(:each) do
     @municipality = assign(:municipality, municipality)
   end

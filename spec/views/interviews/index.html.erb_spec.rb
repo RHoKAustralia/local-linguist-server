@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "interviews/index", type: :view do
-  let(:interview1) { FactoryGirl.create(:interview) }
-  let(:interview2) { FactoryGirl.create(:interview) }
+  let(:interview1) { FactoryBot.create(:interview) }
+  let(:interview2) { FactoryBot.create(:interview) }
   before(:each) do
     assign(:interviews, [interview1, interview2])
   end

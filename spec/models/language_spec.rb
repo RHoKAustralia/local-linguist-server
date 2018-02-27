@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Language, type: :model do
-  subject { FactoryGirl.create(:language) }
+  subject { FactoryBot.create(:language) }
 
   describe '#to_s' do
     it 'returns the name' do

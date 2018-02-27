@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Region, type: :model do
-  subject { FactoryGirl.create(:region) }
+  subject { FactoryBot.create(:region) }
 
   describe '#to_s' do
     it 'returns the name' do

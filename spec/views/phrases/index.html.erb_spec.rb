@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'phrases/index', type: :view do
-  let(:phrase1) { FactoryGirl.create(:phrase) }
-  let(:phrase2) { FactoryGirl.create(:phrase) }
+  let(:phrase1) { FactoryBot.create(:phrase) }
+  let(:phrase2) { FactoryBot.create(:phrase) }
 
   before(:each) do
     assign(:phrases, [phrase1, phrase2])

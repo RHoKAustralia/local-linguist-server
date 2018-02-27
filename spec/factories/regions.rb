@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   sequence :region_name do |n|
     "Region #{n}"
   end

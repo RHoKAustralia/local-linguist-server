@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'studies/show', type: :view do
   before(:each) do
-    @study = assign(:study, FactoryGirl.create(:study))
+    @study = assign(:study, FactoryBot.create(:study))
   end
 
   it 'renders attributes in <p>' do

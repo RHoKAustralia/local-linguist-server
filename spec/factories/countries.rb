@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   sequence :country_name do |n|
     "Country #{n}"
   end

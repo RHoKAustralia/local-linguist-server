@@ -4,8 +4,8 @@ RSpec.describe 'recordings/edit', type: :view do
   before(:each) do
     @recording = assign(:recording, Recording.create!(
       :audio => '',
-      :interview => FactoryGirl.create(:interview),
-      :phrase => FactoryGirl.create(:phrase)
+      :interview => FactoryBot.create(:interview),
+      :phrase => FactoryBot.create(:phrase)
     ))
   end
 

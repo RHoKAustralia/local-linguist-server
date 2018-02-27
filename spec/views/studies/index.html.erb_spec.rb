@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "studies/index", type: :view do
-  let(:study1) { FactoryGirl.create(:study) }
-  let(:study2) { FactoryGirl.create(:study) }
+  let(:study1) { FactoryBot.create(:study) }
+  let(:study2) { FactoryBot.create(:study) }
 
   before(:each) do
     assign(:studies, [study1, study2])

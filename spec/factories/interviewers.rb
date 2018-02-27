@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   sequence :interviewer_name do |n|
     "Interviewer #{n}"
   end

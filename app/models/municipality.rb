@@ -1,7 +1,7 @@
 # Each Region within a Country is split into several Municipalities.
 #
 # @author Craig Read
-class Municipality < ActiveRecord::Base
+class Municipality < ApplicationRecord
   belongs_to :region
   has_many :locales
 

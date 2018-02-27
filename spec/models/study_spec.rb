@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Study, type: :model do
-  subject { FactoryGirl.create(:study) }
+  subject { FactoryBot.create(:study) }
 
   describe '#to_s' do
     it 'returns the name' do
