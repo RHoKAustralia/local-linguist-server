@@ -31,9 +31,6 @@ gem 'rubyzip', '>= 1.0.0'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
 # Upload images and files with paperclip
 gem 'paperclip', '~> 4.3'
 
@@ -44,11 +41,11 @@ gem 'nested_form'
 gem 'bootstrap-generators', '~> 3.3.4'
 
 group :development do
-  gem 'capistrano',         require: false
+  gem 'capistrano', require: false
   gem 'capistrano-rvm',     require: false
   gem 'capistrano-rails',   require: false
   gem 'capistrano-bundler', require: false
-  gem 'capistrano3-puma',   require: false
+ gem 'capistrano3-puma',   require: false
 
   gem 'better_errors'
   gem 'binding_of_caller'

@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock '3.4.0'
+lock '3.4.1'
 
 server '45.79.129.214', port: 16_888, roles: [:web, :app, :db], primary: true
 
