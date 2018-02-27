@@ -2,7 +2,7 @@
 # e.g. The quick brown fox jumped over the sleeping dog.
 #
 # @author Craig Read
-class Phrase < ActiveRecord::Base
+class Phrase < ApplicationRecord
   belongs_to :study
   has_many :interviews, through: :study
   has_many :recordings, dependent: :destroy

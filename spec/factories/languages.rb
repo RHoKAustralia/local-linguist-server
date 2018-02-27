@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   sequence :language_name do |n|
     "Language #{n}"
   end

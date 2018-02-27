@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Country, type: :model do
-  subject { FactoryGirl.create(:country) }
+  subject { FactoryBot.create(:country) }
 
   describe '#to_s' do
     it 'returns the name' do

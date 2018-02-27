@@ -1,7 +1,7 @@
 # A locale is equivalent to a town or village
 #
 # @author Craig Read
-class Locale < ActiveRecord::Base
+class Locale < ApplicationRecord
   belongs_to :municipality
   has_many :interviews
   has_many :interviewees, through: :interviews

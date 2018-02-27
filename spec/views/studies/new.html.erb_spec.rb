@@ -4,7 +4,7 @@ RSpec.describe "studies/new", type: :view do
   before(:each) do
     assign(:study, Study.new(
       :name => "MyString",
-      :language => nil
+      :start_date => DateTime.now
     ))
   end
 
@@ -15,7 +15,9 @@ RSpec.describe "studies/new", type: :view do
 
       assert_select "input#study_name[name=?]", "study[name]"
 
-      assert_select "select#study_language_id[name=?]", "study[language_id]"
+      assert_select "select#study_start_date_1i[name=?]", "study[start_date(1i)]"
+      assert_select "select#study_start_date_2i[name=?]", "study[start_date(2i)]"
+      assert_select "select#study_start_date_3i[name=?]", "study[start_date(3i)]"
     end
   end
 end

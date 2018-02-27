@@ -2,7 +2,7 @@
 # particular phrases within a language.
 #
 # @author Craig Read
-class Recording < ActiveRecord::Base
+class Recording < ApplicationRecord
   belongs_to :interview
   belongs_to :phrase
 

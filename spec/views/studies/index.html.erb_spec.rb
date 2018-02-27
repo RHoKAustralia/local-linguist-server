@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "studies/index", type: :view do
-  let(:study1) { FactoryGirl.create(:study) }
-  let(:study2) { FactoryGirl.create(:study) }
+  let(:study1) { FactoryBot.create(:study) }
+  let(:study2) { FactoryBot.create(:study) }
 
   before(:each) do
     assign(:studies, [study1, study2])
@@ -13,7 +13,5 @@ RSpec.describe "studies/index", type: :view do
     assert_select 'tr>td', text: study1.name.to_s, count: 1
     assert_select 'tr>td', text: study2.name.to_s, count: 1
     assert_select 'tr>td', text: study1.start_date.to_s, count: 2
-    assert_select 'tr>td', text: study1.language.to_s, count: 1
-    assert_select 'tr>td', text: study2.language.to_s, count: 1
   end
 end

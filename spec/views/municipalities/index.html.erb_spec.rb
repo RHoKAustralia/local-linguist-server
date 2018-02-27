@@ -5,11 +5,11 @@ RSpec.describe "municipalities/index", type: :view do
     assign(:municipalities, [
       Municipality.create!(
         :name => "Name",
-        :region => nil
+        :region_id => FactoryBot.create(:region, name: "Region").id
       ),
       Municipality.create!(
         :name => "Name",
-        :region => nil
+        :region_id => FactoryBot.create(:region, name: "Region").id
       )
     ])
   end
@@ -17,6 +17,6 @@ RSpec.describe "municipalities/index", type: :view do
   it "renders a list of municipalities" do
     render
     assert_select "tr>td", :text => "Name".to_s, :count => 2
-    assert_select "tr>td", :text => nil.to_s, :count => 2
+    assert_select "tr>td", :text => "Region", :count => 2
   end
 end

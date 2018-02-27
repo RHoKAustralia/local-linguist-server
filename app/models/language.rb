@@ -1,7 +1,7 @@
 # This class represents a spoken and/or written language.
 #
 # @author Craig Read
-class Language < ActiveRecord::Base
+class Language < ApplicationRecord
   has_many :interviews
   has_many :locales, through: :interviews
   has_many :interviewees, through: :interviews

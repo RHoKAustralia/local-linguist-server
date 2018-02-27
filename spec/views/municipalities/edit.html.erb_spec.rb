@@ -2,10 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "municipalities/edit", type: :view do
   before(:each) do
-    @municipality = assign(:municipality, Municipality.create!(
-      :name => "MyString",
-      :region => nil
-    ))
+    @municipality = assign(:municipality, FactoryBot.create(:municipality))
   end
 
   it "renders the edit municipality form" do

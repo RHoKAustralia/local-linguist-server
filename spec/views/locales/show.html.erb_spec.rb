@@ -2,10 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "locales/show", type: :view do
   before(:each) do
-    @locale = assign(:locale, Locale.create!(
-      :name => "Name",
-      :municipality => nil
-    ))
+    @locale = assign(:locale, FactoryBot.create(:locale))
   end
 
   it "renders attributes in <p>" do

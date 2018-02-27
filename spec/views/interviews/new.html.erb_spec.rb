@@ -15,13 +15,13 @@ RSpec.describe "interviews/new", type: :view do
 
     assert_select "form[action=?][method=?]", interviews_path, "post" do
 
-      assert_select "input#interview_study_id[name=?]"
+      assert_select "select#interview_study_id[name=?]", 'interview[study_id]'
 
-      assert_select "input#interview_interviewer_id[name=?]"
+      assert_select "select#interview_interviewer_id[name=?]", 'interview[interviewer_id]'
 
-      assert_select "input#interview_interviewee_id[name=?]"
+      assert_select "select#interview_interviewee_id[name=?]", 'interview[interviewee_id]'
 
-      assert_select "input#interview_locale_id[name=?]"
+      assert_select "select#interview_locale_id[name=?]", 'interview[locale_id]'
     end
   end
 end

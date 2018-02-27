@@ -4,7 +4,7 @@ require 'zip'
 # a particular locale.
 #
 # @author Craig Read
-class Interview < ActiveRecord::Base
+class Interview < ApplicationRecord
   belongs_to :study
   belongs_to :language
   belongs_to :interviewer
@@ -27,11 +27,11 @@ class Interview < ActiveRecord::Base
                        content_type: { content_type: "application/zip" },
                        size: { in: 0..8192.kilobytes }
 
-  delegate :name, to: :study, prefix: :study, nil: true
-  delegate :name, to: :language, prefix: :language, nil: true
-  delegate :name, to: :interviewer, prefix: :interviewer, nil: true
-  delegate :name, to: :interviewee, prefix: :interviewee, nil: true
-  delegate :name, to: :locale, prefix: :locale, nil: true
+  delegate :name, to: :study, prefix: :study, allow_nil: true
+  delegate :name, to: :language, prefix: :language, allow_nil: true
+  delegate :name, to: :interviewer, prefix: :interviewer, allow_nil: true
+  delegate :name, to: :interviewee, prefix: :interviewee, allow_nil: true
+  delegate :name, to: :locale, prefix: :locale, allow_nil: true
 
   def to_s
     "#{study_name}, #{locale_name}, #{interview_time}"

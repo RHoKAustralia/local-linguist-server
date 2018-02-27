@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   sequence :locale_name do |n|
     "Locale #{n}"
   end

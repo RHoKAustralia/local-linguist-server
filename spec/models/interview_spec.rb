@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Interview, type: :model do
-  subject { FactoryGirl.create(:interview) }
+  subject { FactoryBot.create(:interview) }
 
   describe '#to_s' do
     it 'returns the study name, location name and interview time' do
