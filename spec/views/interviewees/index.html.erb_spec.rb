@@ -9,7 +9,10 @@ RSpec.describe "interviewees/index", type: :view do
         :email => "Email",
         :gender => "Gender",
         :occupation => "Occupation",
-        :education_level => "Education Level"
+        :education_level => "Education Level",
+        :age => 21,
+        locale_id: FactoryBot.create(:locale).id,
+        first_language: "Tetung"
       ),
       Interviewee.create!(
         :name => "Name",
@@ -17,7 +20,10 @@ RSpec.describe "interviewees/index", type: :view do
         :email => "Email",
         :gender => "Gender",
         :occupation => "Occupation",
-        :education_level => "Education Level"
+        :education_level => "Education Level",
+        :age => 21,
+        locale_id: FactoryBot.create(:locale).id,
+        first_language: "Tetung"
       )
     ])
   end

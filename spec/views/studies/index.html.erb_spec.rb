@@ -13,7 +13,5 @@ RSpec.describe "studies/index", type: :view do
     assert_select 'tr>td', text: study1.name.to_s, count: 1
     assert_select 'tr>td', text: study2.name.to_s, count: 1
     assert_select 'tr>td', text: study1.start_date.to_s, count: 2
-    assert_select 'tr>td', text: study1.language.to_s, count: 1
-    assert_select 'tr>td', text: study2.language.to_s, count: 1
   end
 end

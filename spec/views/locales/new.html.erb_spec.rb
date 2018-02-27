@@ -4,7 +4,7 @@ RSpec.describe "locales/new", type: :view do
   before(:each) do
     assign(:locale, Locale.new(
       :name => "MyString",
-      :municipality => nil
+      :municipality_id => FactoryBot.create(:municipality).id
     ))
   end
 
@@ -13,9 +13,9 @@ RSpec.describe "locales/new", type: :view do
 
     assert_select "form[action=?][method=?]", locales_path, "post" do
 
-      assert_select "input#locale_name[name=?]"
+      assert_select "input#locale_name[name=?]", 'locale[name]'
 
-      assert_select "input#locale_municipality_id[name=?]"
+      assert_select "select#locale_municipality_id[name=?]", 'locale[municipality_id]'
     end
   end
 end

@@ -2,11 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "phrases/edit", type: :view do
   before(:each) do
-    @phrase = assign(:phrase, Phrase.create!(
-      :english_text => "MyString",
-      :audio => "",
-      :image => ""
-    ))
+    @phrase = assign(:phrase, FactoryBot.create(:phrase))
   end
 
   it "renders the edit phrase form" do
