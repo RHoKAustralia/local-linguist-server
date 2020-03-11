@@ -1,4 +1,4 @@
-class CreatePhrases < ActiveRecord::Migration
+class CreatePhrases < ActiveRecord::Migration[4.2]
   def change
     create_table :phrases do |t|
       t.string :english_text

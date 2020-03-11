@@ -1,4 +1,4 @@
-class AddPromptToPhrase < ActiveRecord::Migration
+class AddPromptToPhrase < ActiveRecord::Migration[4.2]
   def change
     add_column :phrases, :prompt_text, :string
     Phrase.all.map do |p|

@@ -1,4 +1,4 @@
-class CreateInterviewees < ActiveRecord::Migration
+class CreateInterviewees < ActiveRecord::Migration[4.2]
   def change
     create_table :interviewees do |t|
       t.string :name
