@@ -5,7 +5,7 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - db_init
+      - db
   db:
     image: postgres
     environment:
@@ -13,13 +13,8 @@ services:
       POSTGRES_PASSWORD: password
     expose:
       - "5432"
-  db_init:
-    build: ..
-    depends_on:
-      - db
-    command: ./prep_db.sh
   test:
     build: ..
     depends_on:
-      - db_init
+      - db
     command: rake
