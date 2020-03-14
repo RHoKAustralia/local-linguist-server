@@ -5,16 +5,16 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - db
-  db:
+      - local-linguist-db
+  local-linguist-db:
     image: postgres
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
     expose:
       - "5432"
-  test:
+  local-linguist-test:
     build: ..
     depends_on:
-      - db
+      - local-linguist-db
     command: rake

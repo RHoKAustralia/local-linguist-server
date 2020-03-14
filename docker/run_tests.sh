@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker-compose run --rm test
+docker-compose run --rm local-linguist-test

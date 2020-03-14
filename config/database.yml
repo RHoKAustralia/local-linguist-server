@@ -24,7 +24,7 @@ default: &default
 development:
   <<: *default
   database: linguist_development
-  host: db
+  host: local-linguist-db
   username: postgres
   password: password
 
@@ -61,7 +61,7 @@ development:
 test:
   <<: *default
   database: linguist_test
-  host: db
+  host: local-linguist-db
   username: postgres
   password: password
 
