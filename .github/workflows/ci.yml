@@ -11,7 +11,7 @@ jobs:
           --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
-          --health-retries 5
+          --health-retries 10
     steps:
       - uses: actions/checkout@v1
       - name: Setup Ruby
@@ -20,12 +20,11 @@ jobs:
           ruby-version: 2.5.x
       - name: Build and run tests
         env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
           RAILS_ENV: test
-          RAILS_MASTER_KEY: ${{ secrets.SECRET_KEY_BASE }}
         run: |
           sudo apt-get -yqq install libpg-dev
           gem install bundler
           bundle install --jobs 4 --retry 3
           bundle exec rake db:setup
+          bundle exec rake db:test:prepare
           bundle exec rake spec
