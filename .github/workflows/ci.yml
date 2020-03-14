@@ -9,13 +9,14 @@ jobs:
         ports: ['5432:5432']
 
     steps:
-      -name: Build and run tests
-      env:
-        POSTGRES_USER: postgres
-        POSTGRES_PASSWORD: password
-        RAILS_ENV: test
-      run: |
-        gem install bundler
-        bundle install --jobs 4 --retry 3
-        bundle exec rake db:test:prepare
-        bundle exec rake spec
+      - uses: actions/checkout@v1
+      - name: Build and run tests
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+          RAILS_ENV: test
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+          bundle exec rake db:test:prepare
+          bundle exec rake spec
