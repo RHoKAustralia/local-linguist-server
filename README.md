@@ -41,6 +41,10 @@ Linguist has been developed using Ruby on Rails. To run this application, you wi
 
 The server will then be running.
 
+*Running in docker*
+
+There are scripts to run the server and app within docker, under the docker/ directory.
+
 *data relationships*
 
 The Linguist application has the following data relationships.

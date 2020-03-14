@@ -2,7 +2,7 @@
 # the study to the interview level
 #
 # @author Craig Read
-class MoveLanguageFromStudyToInterview < ActiveRecord::Migration
+class MoveLanguageFromStudyToInterview < ActiveRecord::Migration[4.2]
   def up
     remove_column :studies, :language_id
     add_column :interviews, :language_id, :integer

@@ -1,4 +1,4 @@
-class CreateInterviewers < ActiveRecord::Migration
+class CreateInterviewers < ActiveRecord::Migration[4.2]
   def change
     create_table :interviewers do |t|
       t.string :name
