@@ -1,3 +1,5 @@
+![CI](https://github.com/RHoKAustralia/local-linguist-server/workflows/CI/badge.svg)
+
 **Local Lingust Server**
 
 This is a back-end server application for the Local Linguist Android application.
