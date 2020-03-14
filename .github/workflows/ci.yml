@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       local-linguist-db:
-        image: postgres
+        image: postgres:11
         ports: ['5432:5432']
         options: >-
           --health-cmd pg_isready
@@ -21,12 +21,11 @@ jobs:
           ruby-version: 2.5.x
       - name: Build and run tests
         env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: password
+          DATABASE_URL: postgres://postgres:@localhost:5432/test
           RAILS_ENV: test
         run: |
-          sudo apt-get -yqq install libpq-dev
+          sudo apt-get -yqq install libpg-dev
           gem install bundler
           bundle install --jobs 4 --retry 3
-          bundle exec rake db:test:prepare
+          bundle exec rake db:setup
           bundle exec rake spec
