@@ -3,6 +3,7 @@ on: [push, pull_request]
 jobs:
   test:
     runs-on: ubuntu-latest
+    container: ruby:2.5
     services:
       local-linguist-db:
         image: postgres
@@ -20,10 +21,6 @@ jobs:
           --health-retries 5
     steps:
       - uses: actions/checkout@v2
-      - name: Setup Ruby
-        uses: actions/setup-ruby@v1
-        with:
-          ruby-version: 2.5.x
       - name: Build and run tests
         env:
           RAILS_ENV: test
