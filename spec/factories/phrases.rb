@@ -10,6 +10,6 @@ FactoryBot.define do
     p.english_text { generate(:phrase_text) }
     p.prompt_text { generate(:prompt_text) }
     p.study { |a| a.association(:study) }
-    p.response_type_id 1
+    p.response_type_id { 1 }
   end
 end

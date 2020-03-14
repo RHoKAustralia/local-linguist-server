@@ -12,11 +12,11 @@ FactoryBot.define do
   factory :interviewee do |i|
     i.name { generate(:interviewee_name) }
     i.email  { generate(:email_address) }
-    i.gender 'Female'
-    i.occupation 'Farmer'
-    i.education_level 'High School'
-    i.age 35
+    i.gender { 'Female' }
+    i.occupation { 'Farmer' }
+    i.education_level { 'High School' }
+    i.age { 35 }
     i.locale { |a| a.association(:locale) }
-    i.first_language 'Tetum'
+    i.first_language { 'Tetum' }
   end
 end
