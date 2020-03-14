@@ -1,0 +1,36 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: ruby:2.5
+    services:
+      local-linguist-db:
+        image: postgres
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: linguist_test
+        ports:
+          # maps 5432 to a random free host port
+          - 5432/tcp
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build and run tests
+        env:
+          RAILS_ENV: test
+          POSTGRES_HOST: localhost
+          POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }} # get randomly assigned published port
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+          bundle exec rake db:setup
+          bundle exec rake db:test:prepare
+          bundle exec rake spec
