@@ -7,7 +7,7 @@ jobs:
       local-linguist-db:
         image: postgres
         env:
-          POSTGRES_PASSWORD: ${{ secrets.LINGUIST_DATABASE_PASSWORD }}
+          POSTGRES_PASSWORD: password
         ports: ['5432:5432']
         options: >-
           --health-cmd pg_isready
