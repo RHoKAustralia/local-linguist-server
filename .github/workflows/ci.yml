@@ -12,7 +12,6 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-
     steps:
       - uses: actions/checkout@v1
       - name: Setup Ruby
@@ -21,8 +20,9 @@ jobs:
           ruby-version: 2.5.x
       - name: Build and run tests
         env:
-          DATABASE_URL: postgres://postgres:@localhost:5432/test
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
           RAILS_ENV: test
+          RAILS_MASTER_KEY: ${{ secrets.SECRET_KEY_BASE }}
         run: |
           sudo apt-get -yqq install libpg-dev
           gem install bundler
