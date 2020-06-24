@@ -232,7 +232,7 @@ GEM
     procto (0.0.3)
     public_suffix (3.0.2)
     puma (3.11.2)
-    rack (2.0.4)
+    rack (2.2.3)
     rack-accept (0.4.5)
       rack (>= 0.4)
     rack-test (0.8.2)
